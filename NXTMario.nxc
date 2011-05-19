@@ -1,0 +1,335 @@
+/* MARIO for the NXT!!!
+
+Special thanks goes out to the authors of the following webpages for all their programming help:
+http://www.newgrounds.com/portal/view/209851
+http://www.kirupa.com/developer/mx2004/platform_game.htm
+(find link for the 4k Java Jump and run game and put it here)
+*/
+
+//#download "Mario.rmd"        //Download the Mario Midi File
+
+#define MAP_FILE_NAME "Marlo.map"
+#define TileWidth 8
+#define TileHeight 8
+#define ScreenWidth 100
+#define ScreenHeight 64
+#define MAP_DARK_GROUND    0
+#define MAP_DARK_SKY       1
+#define MAP_SKY            2
+#define MAP_EXIT_1         3
+#define MAP_EXIT_2         4
+#define MAP_STRIPE_SKY     5
+#define MAP_EXIT_3         6
+#define MAP_EXIT_4         7
+#define MAP_CLOUD_1        8
+#define MAP_CLOUD_2        9
+#define MAP_CLOUD_3        10
+#define MAP_QUESTION       11
+#define MAP_BLACK_BLOCK    12
+#define MAP_METAL_1        13
+#define MAP_METAL_2        14
+#define MAP_CLOUD_4        15
+#define MAP_CLOUD_5        16
+#define MAP_CLOUD_6        17
+#define MAP_CLOUD_7        18
+#define MAP_COIN           19
+#define MAP_HEART          20
+#define MAP_BREAK_BLOCK    21
+#define MAP_MUSHROOM       22
+#define MAP_PYRAMID_1      23
+#define MAP_PYRAMID_2      24
+#define MAP_STAR           25
+#define MAP_MOVE_PLATFORM  26
+#define MAP_SIDE_COIN      27
+#define MAP_PIPE_TOP_1     28
+#define MAP_PIPE_TOP_2     29
+#define MAP_PIPE_MIDDLE_1  30
+#define MAP_PIPE_MIDDLE_2  31
+#define MAP_TREE_1         32
+#define MAP_TREE_2         33
+#define MAP_LINE_1         34
+#define MAP_PLATFORM       35
+#define MAP_GOOMBA         36
+#define MAP_SPHINX_1       37
+#define MAP_SPHINX_2       38
+#define MAP_PYRAMID_TREE_1 39
+#define MAP_UPPER_GROUND   40
+#define MAP_SPHINX_3       41
+#define MAP_SPHINX_4       42
+#define MAP_SPHINX_5       43
+#define MAP_TURTLE_HEAD    44
+#define MAP_PYRAMID_TREE_2 45
+#define MAP_GNAT_1         46
+#define MAP_GNAT_2         47
+#define MAP_TURTLE_BODY    48
+#define MAP_GNAT_3         49
+#define MAP_GNAT_4         50
+#define MAP_LINE_2         51
+#define MAP_LOWER_GROUND   52
+
+int MarioX = 10;
+int MarioY = 50;
+int MarioX1 = 4;    //try 0
+int MarioY1 = 4;    //try 0
+int MarioX2 = 11;   //try 12
+int MarioY2 = 15;
+int MarioUp = 0;
+int MarioDown = 0;
+int MarioLeft = 0;
+int MarioRight = 0;
+int MarioC;
+int oldMarioX = 10;
+int oldMarioY = 0;
+int oldMarioC;
+int btnLeft;
+int btnRight;
+int btnCenter;
+int direction = 1;
+string fileDirection;
+int toggleMoving = 1;
+int jumping = 0;
+int maxheight = 20;
+int falling = 1;
+int pressedCenter = 0;
+int jumpoffspot;
+float speed = 0;
+float maxspeed = 15;
+float gravity = 1.2; // was 1.5
+float velocity = 0;
+byte handleMap = 0;
+int fsizeMap = 0;
+int ferrorMap = 0;
+byte handleSprites = 0;
+int fsizeSprites = 0;
+int dirtyMario = 0;
+long MapWidth = 300;
+long MapHeight = 16;
+int debug1;
+int debug2;
+byte Map[MapHeight][MapWidth];
+int RICValues[1];
+int CameraX = -30;
+int CameraY = 64;
+
+
+int loadMap()
+{
+  ferrorMap = OpenFileRead(MAP_FILE_NAME, fsizeMap, handleMap);
+  Read(handleMap, MapWidth);
+  Read(handleMap, MapHeight);
+  Read(handleMap, Map);
+}
+
+int GetMap(int x, int y)                                        // This function lets us safely get any map position
+{
+if ((x >= 0) && (x < MapWidth) && (y >= 0) && ((MapHeight - y) < MapHeight))
+{
+ return Map[MapHeight-y][x] + 1;
+}
+else
+{
+ return 2;
+}
+}
+
+int drawMap(int locx, int locy)
+{
+  int i, j, absx, absy, mapx, mapy, xoffset, yoffset;
+  mapx = locx / TileWidth;
+  mapy = locy / TileHeight;
+  xoffset = TileWidth - locx % TileWidth;
+  yoffset = locy % TileHeight;
+  for (i = 0; i < ScreenHeight / TileHeight + 2; i++) // Changing to + 1 gives a slight speed increase, but slops edges
+  {
+   for (j = 0; j < ScreenWidth / TileWidth + 2; j++)  // Changing to + 1 gives a slight speed increase, but slops edges
+   {
+    //debug1=(mapy+i) % 4;
+    //debug2=(mapx+j) % 4;
+    //RICValues[0] = Map[(mapy+i) % 4][(mapx+j) % 4];
+    //RICValues[0] = Map[(mapy+i) % 10][(mapx+j) % 16];
+    absx = mapx + j;
+    absy = MapHeight - mapy - i;
+    if ((absx >= 0) && (absx < MapWidth) && (absy >= 0) && (absy < MapHeight))
+    {
+      RICValues[0] = Map[absy][absx] + 1;
+    }
+    else
+    {
+      RICValues[0] = 2;
+    }
+    //RICValues[0] = Map[8][13];
+    GraphicOutEx((j-1)*TileWidth + xoffset, (i-1)*TileHeight - yoffset, "MarloSprites.ric", RICValues);
+    //Wait(50);
+   }
+  }
+}
+
+int updateMario()
+{
+  //RectOut(oldMarioX - CameraX, oldMarioY - CameraY, 12, 15, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear old mario
+  //RectOut(0, 35, 50, 28, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear Debug Watches
+  NumOut(0,LCD_LINE2, MarioDown); //Debug Watches
+  NumOut(0,LCD_LINE3, (MarioY - 1 + 8) >> 3); //Debug Watches
+  if (direction == -1)
+  {
+    fileDirection = "Left";
+  }
+  else
+  {
+    fileDirection = "Right";
+  }
+  //drawMap(50,50);
+  GraphicOut(MarioX - CameraX, MarioY - CameraY, "mario" + fileDirection + NumToStr(MarioC) + ".ric"); //Draw new mario
+
+  //oldMarioX = MarioX;
+  //oldMarioY = MarioY;
+  //oldMarioC = MarioC;
+
+}
+
+int isSolid(int SpriteNumber)
+
+
+task main()
+{
+  // *********************** Initialization *************************** //
+  
+  //SetSoundVolume(1);
+  //PlayFile("Mario.rmd");
+  loadMap();
+  
+  while(true)
+  {
+    // *********************** Event Handling *************************** //
+    
+    btnLeft = ButtonPressed(BTNLEFT, false);
+    btnRight = ButtonPressed(BTNRIGHT, false);
+    btnCenter = ButtonPressed(BTNCENTER, false);
+
+    if (btnLeft)                // Left button is being pressed
+    {
+      if (speed > (0 - maxspeed)) // If Mario can go faster...
+      {
+        speed -=2;              // ... mario moves faster to the left
+      }
+    }
+    else if (btnRight)
+    {
+      if (speed < maxspeed)     // If Mario can go faster...
+      {
+        speed +=2;              // ... mario moves faster to the right
+      }
+    }
+
+    if (speed < 0)              // If Mario is going left...
+    {
+      direction = -1;           // ... set the direction to left
+      if (MarioX > 0)           // If Mario isn't up against a wall...
+      {
+        MarioX += speed;
+        MarioC = MarioC + 1;
+        toggleMoving = 1;
+        if (MarioC > 3)
+        {
+          MarioC = 1;
+        }
+        dirtyMario = 1;        // Mario has moved
+      }
+    }
+    else if (speed > 0)          // Or if Mario is going Right...
+    {
+      direction = 1;             // ... set the direction to right
+      if (MarioX < MapWidth * TileWidth)
+      {
+        MarioX += speed;
+        MarioC = MarioC + 1;
+        toggleMoving = 1;
+        if (MarioC > 3)
+        {
+          MarioC=1;
+        }
+        dirtyMario = 1;        // Mario has moved
+      }
+    }
+
+    if (btnCenter)             // Center button being pressed
+    {
+      if (pressedCenter == false) //No Auto Jumping!
+      {
+        pressedCenter = true;    //You have pressed but not released the Center button
+        if (falling == false)    // If he isn't already falling
+        {
+          velocity -= 10;        // Throw him in the air!
+          falling = true;        // Gravity now affects him!
+          jumping = true;        // He is on the ascending part of his jump!
+          PlayFile("Mario Jump quie.rso");
+        }
+      }
+    }
+    else pressedCenter = false;   // You have released the button
+    
+    // *********************** Physics *************************** //
+
+    if (velocity > 0)             // He is on the descending part of his jump
+    {
+      jumping = false;
+    }
+    
+    if (falling)               // Gravity
+    {
+      velocity += gravity;
+      MarioY -= velocity;
+      dirtyMario = 1;          // Mario has moved
+    }
+
+   // Collision Detection
+   
+    //if Map[MarioY + ? >> 3][MarioX + ? >> 3]
+    //   if Map[MarioY + MarioY1 >> 3][MarioX + MarioX1 >> 3]
+
+    // Floor detection
+    MarioDown = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
+    if (MarioDown == )
+    {
+      if (falling && !jumping)
+      {
+        //MarioY = 0;
+        falling = 0;
+        velocity = 0;
+        dirtyMario = 1;        // Mario has moved
+      }
+    }
+    else
+    {
+      falling = true;
+      dirtyMario = 1;
+    }
+
+    speed = speed * 0.55;
+    
+    if (speed >-1 && speed <1 && toggleMoving == 1) // A slow Mario stops
+    {
+      speed = 0;
+      MarioC = 0;
+      dirtyMario = 1;          // Mario has moved
+      toggleMoving = 0;
+    }
+    
+    // *********************** Graphics *************************** //
+    
+    if (dirtyMario == 1)        // If Mario has moved...
+    {
+     CameraX = MarioX - 45;     // Move Camera horizantally with Mario
+     CameraY = MarioY - 28;     // Move Camera vertically with Mario
+     if (CameraX < 0) CameraX = 0; // Don't move camera past the left edge
+     if (CameraY < 0) CameraY = 0; // Don't move camera past the bottom edge
+                                // TODO: Add parts for the top and right edges...
+     drawMap(CameraX, CameraY);
+     //drawMap(0, 0);
+     updateMario();            // ...then redraw him
+     dirtyMario = 0;           // Voila! He is clean!
+    }
+    //Wait(50);
+  }
+
+}
