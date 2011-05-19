@@ -1,0 +1,14 @@
+Hello!
+
+This is the Lego Mindstorms NXT Mario Github project page!
+In order to run NXT Mario, you can:
+
+A) Download a binary (that means the ready to run game), and download it to the NXT
+
+-or-
+
+B) Download the source code (that means the human code that a computer must convert), compile it with BricxCC*, and download to the NXT
+
+The binaries are in the folder called bin :-)
+
+* http://bricxcc.sourceforge.net/
