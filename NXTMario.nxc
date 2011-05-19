@@ -188,7 +188,8 @@ int updateMario()
 }
 
 int isSolid(int SpriteNumber)
-
+{
+}
 
 task main()
 {
@@ -289,7 +290,7 @@ task main()
 
     // Floor detection
     MarioDown = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
-    if (MarioDown == )
+    if (MarioDown <> 2)
     {
       if (falling && !jumping)
       {
