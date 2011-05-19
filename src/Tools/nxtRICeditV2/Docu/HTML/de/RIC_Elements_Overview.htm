@@ -1,0 +1,558 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Neue Seite 3</title>
+<base target="_self">
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="5">
+RIC-Elemente</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="left">
+<font face="Arial" size="2">Wie ist nun eine RIC-Datei intern aufgebaut? 
+Eigentliche Grafikdateien beinhalten einen Header, der z.B. Auskunft über die 
+Größe des Bitmaps oder die Farbpalette gibt, und einem eigentlichen binären 
+Bereich, der die Informationen über die Pixels der Grafik enthält. Bei 
+RIC-Dateien verhält es sich hier ein wenig anders! Natürlich gibt es auch einen 
+Bereich zum Speichern einer monochromen Matrix - darüber hinaus jedoch sind noch 
+viele andere Elemente vorhanden, die für die Ausgabe auf den NXT-Bildschirm 
+verwendet werden können:</font></p>
+<p style="margin-top: 0; margin-bottom: 0" align="left">&nbsp;</p>
+<table border="0" width="100%" id="table1" cellpadding="3">
+	<tr>
+		<td width="80" align="left" valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Element</font></td>
+		<td width="80" align="center" bgcolor="#000000">
+		<font color="#FFFFFF" face="Arial" size="2">Symbol</font></td>
+		<td align="left" valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Funktion</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">Information</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_Information.htm">
+		<img border="0" src="../../images/nxtRICedit_Information.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Dieses 
+		Element enthält die für NXT-G ausgewiesene Größe der Grafik, die in der 
+		RIC-Datei vorhanden ist</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#E0E0E0">
+		<font face="Arial" size="2">Point</font></td>
+		<td width="80" align="center" bgcolor="#E0E0E0">
+		<a target="MAIN" href="RIC_Elements_Point.htm">
+		<img border="0" src="../../images/nxtRICedit_Point.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#E0E0E0"><font face="Arial" size="2">Zeichnet 
+		einen einzelnen Punkt auf dem NXT-Bildschirm</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font size="2" face="Arial">Line</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_Line.htm">
+		<img border="0" src="../../images/nxtRICedit_Line.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Zeichnet 
+		eine beliebige Linie auf den NXT-Bildschirm</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#E0E0E0">
+		<font face="Arial" size="2">Rectangle</font></td>
+		<td width="80" align="center" bgcolor="#E0E0E0">
+		<a target="MAIN" href="RIC_Elements_Rectangle.htm">
+		<img border="0" src="../../images/nxtRICedit_Rectangle.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#E0E0E0"><font face="Arial" size="2">Zeichnet 
+		ein nicht gefülltes Rechteck auf dem NXT-Bildschirm</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">Circle</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_Circle.htm">
+		<img border="0" src="../../images/nxtRICedit_Circle.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Zeichnet 
+		einen Kreises auf dem NXT-Bildschirm</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#E0E0E0">
+		<font face="Arial" size="2">NumBox</font></td>
+		<td width="80" align="center" bgcolor="#E0E0E0">
+		<a target="MAIN" href="RIC_Elements_NumBox.htm">
+		<img border="0" src="../../images/nxtRICedit_NumBox.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#E0E0E0"><font face="Arial" size="2">Gibt 
+		einen numerischen Wert auf dem NXT-Bildschirm aus</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">Sprite</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_Sprite.htm">
+		<img border="0" src="../../images/nxtRICedit_Sprite.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Definiert 
+		eine monochrome Bitmatrix, die Zeichnungen enthalten kann</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#E0E0E0">
+		<font face="Arial" size="2">CopyBits</font></td>
+		<td width="80" align="center" bgcolor="#E0E0E0">
+		<a target="MAIN" href="RIC_Elements_CopyBits.htm">
+		<img border="0" src="../../images/nxtRICedit_CopyBit.gif" width="48" height="40"></a></td>
+		<td align="left" bgcolor="#E0E0E0"><font face="Arial" size="2">Kopiert 
+		einen Ausschnitt aus einem Sprite auf den NXT-Bildschirm</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">VarMap</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_VarMap.htm">
+		<img border="0" src="../../images/nxtRICedit_VarMap.gif" width="42" height="42"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Definiert 
+		eine Funktion, die mittels linearer Interpolation Werte umrechnen kann</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Jede 
+RIC-Datei besteht aus einem oder mehren dieser RIC-Elemente, die beim Aufruf der 
+RIC-Datei sequentiell abgearbeitet werden. Standard RIC-Dateien, die sowohl mit 
+NXT-G mitgeliefert werden, bzw. mittels der alten Version von nxtRICedit 
+erstellt wurden, enthalten immer nur drei dieser Elemente:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table2" cellpadding="3">
+	<tr>
+		<td width="80" align="left" valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Element</font></td>
+		<td width="80" align="center" bgcolor="#000000">
+		<font color="#FFFFFF" face="Arial" size="2">Symbol</font></td>
+		<td align="left" valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Funktion</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">Information</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_Information.htm">
+		<img border="0" src="../../images/nxtRICedit_Information.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Es ist 
+		hier die gesamte Größe der gespeicherten Bitmap ( X * Y Punkte) 
+		hinterlegt, damit NXT-G die genaue Angabe für die Größe der Grafik weiß</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#E0E0E0">
+		<font face="Arial" size="2">Sprite</font></td>
+		<td width="80" align="center" bgcolor="#E0E0E0">
+		<a target="MAIN" href="RIC_Elements_Sprite.htm">
+		<img border="0" src="../../images/nxtRICedit_Sprite.gif" width="48" height="38"></a></td>
+		<td align="left" bgcolor="#E0E0E0"><font face="Arial" size="2">Enthält 
+		nur das eine anzuzeigende Bild (Größe X * Y Punkte), das in dieser Datei 
+		hinterlegt ist</font></td>
+	</tr>
+	<tr>
+		<td width="80" align="left" bgcolor="#CCCCCC">
+		<font face="Arial" size="2">CopyBits</font></td>
+		<td width="80" align="center" bgcolor="#CCCCCC">
+		<a target="MAIN" href="RIC_Elements_CopyBits.htm">
+		<img border="0" src="../../images/nxtRICedit_CopyBit.gif" width="48" height="40"></a></td>
+		<td align="left" bgcolor="#CCCCCC"><font face="Arial" size="2">Die 
+		Parameter für das CopyBits-Element sind genau so gewählt, dass das 
+		gesamte Sprite an der relativen Position 0,0 ausgegeben wird</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Für die 
+Anzeige der einfachen RIC-Dateien werden keine zusätzlichen Parameter benötigt. 
+Ein entsprechender Aufruf mittels NXC sieht dann wie folgt aus:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="1" width="100%" id="table3" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{<br>
+		<font color="#0000FF">&nbsp;&nbsp; GraphicOut</font>(
+		<font color="#FF0000">0</font>,<font color="#FF0000">0</font>, <i>
+		<font color="#990033">&quot;TEST.RIC&quot;</font></i> );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Aber 
+selbst dieser parameterlose Aufruf kann mehr als nur ein einzelnes Bild auf dem 
+NXT-Bildschirm ausgeben, wenn man die in der RIC-Datei gespeicherten 
+RIC-Elemente entsprechend auswählt und anordnet!</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Der 
+eigentliche Vorteil der RIC-Dateien kommt erst beim erweiterten Aufruf mittels 
+GraphicOutEx( ) zum Einsatz, bei dem man zusätzlich noch ein Array mit 
+Integerwerten mitgeben kann:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="1" width="100%" id="table4" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; int</b> parameter[
+		<font color="#FF0000">3</font> ];</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>parameter[
+		<font color="#FF0000">0</font> ]= <font color="#FF0000">10</font>;</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>parameter[
+		<font color="#FF0000">1</font> ]= <font color="#FF0000">2</font>;</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>parameter[
+		<font color="#FF0000">2</font> ]= <font color="#FF0000">40</font>;</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<font color="#0000FF">&nbsp;&nbsp; GraphicOutEx</font>(
+		<font color="#FF0000">0</font>,<font color="#FF0000">0</font>, <i>
+		<font color="#990033">&quot;TEST.RIC&quot;</font></i> ,parameter );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Erst 
+diese Form des Aufrufes stößt das bisher verschlossene Tor der zusätzlichen 
+RIC-Funktionen auf! </font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Die 
+Standard-Firmware unterstützt bis zu 16 Parameter (Array-Index 0 bis 15). Die 
+von John Hansen korrigierte Version der Firmware kann dagegen bis zu 256 
+Parameter (Array-Index 0 bis 255) beim Aufruf von GraphicOutEx( ) mitgeben!</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Viele 
+werden sich nun fragen, wozu eigentlich diese Parameter eingesetzt werden 
+können? Um diese Frage zu beantworten, muss man verstehen, wie die einzelnen 
+RIC-Elemente aufgebaut sind, und wie sie funktionieren. Grundsätzlich kann man 
+bei fast jedem RIC-Parameter drei Formen von Werten angeben:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table5">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td width="90" bgcolor="#000000" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+		<font color="#FFFFFF" face="Arial" size="2">Parametertyp</font></td>
+		<td bgcolor="#000000" width="210" align="center" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+		<font face="Arial" size="2" color="#FFFFFF">Anzeigebild</font></td>
+		<td bgcolor="#000000" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+		<font color="#FFFFFF" face="Arial" size="2">Bedeutung / Funktion</font></td>
+	</tr>
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td width="90" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Konstante</font></td>
+		<td width="210" align="center" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<img border="0" src="../../images/nxtRICedit_Value_Constant.gif" width="191" height="28"></td>
+		<td valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Der Wert dieser Konstante wird zur Designzeit im RIC-Element festgelegt 
+		und kann nachträglich nicht mehr geändert werden. Der Wertebereich 
+		dieser Werte ist von 0 bis 4195 (0x0000 - 0x0FFF).</font></td>
+	</tr>
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td width="90" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Parameter</font></td>
+		<td width="210" align="center" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<img border="0" src="../../images/nxtRICedit_Value_Parameter.gif" width="191" height="28"></td>
+		<td valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hier wird der Index angegeben, welcher zur Laufzeit den zu verwendenden 
+		Wert aus dem übergebenen Integer-Array adressiert. So kann dynamisch zur 
+		Laufzeit der zu verwendende Wert übergeben werden.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Der Wert für den Index ist abhängig von der im NXT eingesetzten 
+		Firmware:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table6">
+			<tr>
+				<td width="100" bgcolor="#000000" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Firmware</font></td>
+				<td width="80" bgcolor="#000000" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Dezimal</font></td>
+				<td bgcolor="#000000" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Hex</font></td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Standard</font></td>
+				<td width="80" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0 - 15</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0x0000 - 0x000F</font></td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Extended </font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">by John Hansen</font></td>
+				<td width="80" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0 - 255</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0x0000 - 0x00FF</font></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Über <b>File</b> </font><font size="2" face="Courier New">»</font><font face="Arial" size="2">
+		<b>Settings</b> </font><font size="2" face="Courier New">»</font><font face="Arial" size="2">
+		<b>Parameters</b> kann die Anzahl der zu verwendenden Parameter 
+		eingestellt werden. Alternativ direkt über die beiden Symbole
+		<img border="0" src="../../images/nxtRICedit_Parameter_16.gif" width="25" height="25" align="top"> 
+		und
+		<img border="0" src="../../images/nxtRICedit_Parameter_256.gif" width="25" height="25" align="top">.</font></td>
+	</tr>
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td width="90" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		VarMap</font></td>
+		<td width="210" align="center" valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Value_VarMap.gif" width="191" height="28"></font></td>
+		<td valign="top" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Bei dieser Parameterangabe handelt es sich um eine zweifach indirekten 
+		Adressierung. Der linke Wert gibt an, welches zuvor definierte 
+		VarMap-Element verwendet werden soll. Der rechte Parameter gibt dann den 
+		Index für den Parameter an, dessen Wert über die VarMap-Funktion 
+		umgesetzt wird.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table7">
+			<tr>
+				<td width="60" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Beispiel:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Links wurde das VarMap-Element 1 und 
+				der Parameter 3 ausgewählt. Zur Laufzeit sieht der NXT nach, 
+				welcher Wert im dritten Parameter ( parameter[2] ) übergeben 
+				wurde. Dieser Wert wird dann gegen die Funktion, die im 
+				VarMap-Element 1 hinterlegt ist, übergeben und der daraus 
+				ermittelte Wert wird dann erst zur Laufzeit für das RIC-Element 
+				angewendet.</font></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Auch hier gilt das Gleiche wie für die Parameter-Adressierung: Es kann 
+		nur ein Parameter-Index verwendet werden, der auch von der Firmware 
+		unterstützt wird.</font></td>
+	</tr>
+</table>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="4">Erstellen 
+einer RIC-Datei</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Für die 
+Erstellung der RIC-Datei können die RIC-Elemente in beliebiger Reihenfolge wie 
+Perlen auf eine Schnur gefädelt werden. In unserem Fall ist der Faden jedoch 
+vertikal angeordnet und neue RIC-Elemente werden an das untere Ende angefügt 
+(siehe rot umrandeten Bereich): </font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">
+<img border="0" src="../../images/nxtRICedit_RICListe.gif" width="511" height="383"></p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Das 
+Anhängen ist denkbar einfach und wird durch das Drücken des gewünschten 
+RIC-Element-Symbols im unteren linken Fensterbereich gemacht:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table8">
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Information.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_Information.htm">Information</a> 
+		an das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Point.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_Point.htm">Point</a> an das 
+		Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Line.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_Line.htm">Line</a> an das 
+		Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Rectangle.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_Rectangle.htm">Rectangle</a> 
+		an das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Circle.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_Circle.htm">Circle</a> an 
+		das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_NumBox.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_NumBox.htm">NumBox</a> an 
+		das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">&nbsp;</td>
+		<td width="30"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Sprite.gif" width="33" height="33"></font></td>
+		<td><font face="Arial" size="2">Hängt das RIC-Element
+		<a href="RIC_Elements_Sprite.htm">Sprite</a> an das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_CopyBits.gif" width="33" height="34"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_CopyBits.htm">CopyBits</a> 
+		an das Ende der Liste an</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_VarMap.gif" width="33" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hängt das RIC-Element <a href="RIC_Elements_VarMap.htm">VarMap</a> an 
+		das Ende der Liste an</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+Selbstverständlich kann die Reihenfolge der Elemente in der RIC-Datei auch im 
+nachhinein geändert werden:</font></p>
+<ul>
+	<li>
+	<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Mit 
+	der Maus können die einzelnen RIC-Elemente direkt verschoben werden</font></li>
+	<li>
+	<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Das 
+	aktuell gewählte Element kann mit DEL gelöscht werden</font></li>
+	<li>
+	<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Mit 
+	folgenden Buttons:</font></li>
+</ul>
+<table border="0" width="100%" id="table9">
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Element_Remove.gif" width="32" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Löscht das aktuell ausgewählte RIC-Element</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Element_Double.gif" width="32" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Erstellt eine Kopie des aktuell ausgewählten RIC-Elements und fügt es 
+		dahinter ein</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Element_up.gif" width="32" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Verschiebt das aktuell ausgewählte RIC-Element eine Position nach vorne</font></td>
+	</tr>
+	<tr>
+		<td width="60">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="30">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Element_down.gif" width="32" height="33"></font></td>
+		<td>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Verschiebt das aktuell ausgewählte RIC-Element eine Position nach hinten</font></td>
+	</tr>
+</table>
+
+</body>
+
+</html>

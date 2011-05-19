@@ -1,0 +1,14 @@
+task main()
+{
+   int voltmeter[ 1 ];
+
+   voltmeter[ 0 ] = 30;           // Pointer should show on value 30
+
+   // Draw complete Voltmeter-Display with one call of RIC file!
+
+   GraphicOutEx( 0,0, "VOLTMETER.RIC" ,voltmeter );
+
+   while( 1 )
+      ;
+}
+

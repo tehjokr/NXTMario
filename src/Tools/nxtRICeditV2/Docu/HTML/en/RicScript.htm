@@ -1,0 +1,423 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Neue Seite 3</title>
+<base target="_self">
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="5">RicScript</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">RicScript 
+is a text base method for defining RIC files and was developed by John. C. 
+Hansen.</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">With 
+RicScript you can create the same kind of RIC files like you can do it with 
+nxtRICeditV2 - but the big difference is that you have to use a text based 
+editor for defining the RicScript files. The syntax of RicScript isn't very 
+complex and will be described as following:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table1" cellpadding="2">
+	<tr>
+		<td width="100" bgcolor="#000000">
+		<font face="Arial" size="2" color="#FFFFFF">Element</font></td>
+		<td bgcolor="#000000"><font face="Arial" size="2" color="#FFFFFF">
+		Definition</font></td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Description</font></b></td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">desc( options, width, height );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		In the current version of the firmware the paramter options will not be 
+		used and should be 0. The other two parameters will only be used by 
+		NXT-G - so the Description element has no effect for drawing pictures on 
+		the LCD</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table2" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF"><font face="Courier New" size="2">desc( 0, 
+				50, 20 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Sprite</font></b></td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">sprite( id, bitfields );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">sprite( id, hexfields );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">sprite( id, import( filename ) );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">sprite( id, import( filename, 
+		brightness-threshold ) );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">sprite( id, import( filename, 
+		brightness-threshold, destination_width, destination_height ) );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Define a Sprite element. You can define it with direct information about 
+		the pattern or you can import an existing gaphic file.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example 1:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table3" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">sprite( 1, 11111111,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				10000001,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				10000001,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				11111111&nbsp; );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example 2:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table4" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">sprite( 2, 0xFF,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				0x81,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				0x81,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				0xFF&nbsp; );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example 3:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table5" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">sprite( 2, import( &quot;<a href="file:///c:/temp/picture.bmp">c:\temp\picture.bmp</a>&quot;, 
+				50, 80,40 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">VarMap</font></b></td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">varmap( id, 
+		interpolation-point-definitions );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Define a interpolation function which can be used to transfer given 
+		parameter values to a destination value. Domain value of an 
+		interpolation point is between 0 and 255. The range value must be 
+		between 0 and 65535. Minimum count of interpolation points is 2 - 
+		maximum count of interpolation point is 256.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table6" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">varmap( 4, f(3)=10,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				f(10)=0,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				f(20)=200,</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				f(50)=100 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<b>CopyBits</b></font></td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">copybits( copyopt, spriteid, source_x, 
+		source_y, width, height, dest_x, dest_y );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		CopyBits will be used for transfering a rectangle area from the addresed 
+		sprite to the screen. Parameter copyopt is currently not used and should 
+		be 0. </font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table7" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">copybits( 0, 1, 10, 10, 30, 
+				20, 0, 0 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Pixel</font></b></td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">pixel( copyopt, pos_x, pos_y );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">pixel( copyopt, pos_x, pos_y, value );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		The Pixel element can be used for drawing a single point on the NXT 
+		display. Parameter value is optional and will not be used in the current 
+		firmware version. Parameter copyopt is also not supported by the current 
+		firmware and should be set to 0.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table8" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">pixel( 0, arg( 0 ), maparg( 
+				4,0 ) );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Line</font></b></td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">line( copyopt, start_x, start_y, end_x, 
+		end_y );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Draw a line from the start point (start_x/start_y) to the end point (end_x/end_y). 
+		Parameter copyopt isn't supported by the current firmware and should be 
+		set to 0.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table9" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">line( 0, 10, 20, 60, 25 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Rectangle</font></b></td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">rect( copyopt, edge1_x, edge1_y, 
+		edge2_x, edge2_y );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Draw a rectangle which is defined by the 2 oposite points 
+		(edge1_x/edge1_y) and (edge2_x/edge2_y). Parameter copyopt isn't 
+		supported by the current firmware and should be set to 0.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table10" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">rect( 0, 10, 20, 60, 25 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#E0E0E0" align="left" valign="top"><b>
+		<font face="Arial" size="2">Circle</font></b></td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">circle( copyopt, center_x, center_y, 
+		radius );</font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Draw a circle with center point (center_x/center_y) and the given radius. 
+		Parameter copyopt isn't supported by the current firmware and should be 
+		set to 0.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table12" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">circle( 0, 50,32, 30 );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p>&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">NumBox</font></b></td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Courier New" size="2">numbox( copyopt, pos_x, pos_y, value 
+		); </font></b></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Display the given value as a number on the NXT screen on the given 
+		position (pos_x/pos_y). Please keep in mind that the vertical position 
+		pos_y will be snaped to one of the 8 possible text lines. Parameter 
+		copyopt isn't supported by the current firmware and should be set to 0.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Example:&nbsp;&nbsp; </font></p>
+		<table border="0" width="100%" id="table11" cellpadding="2">
+			<tr>
+				<td width="50">&nbsp;</td>
+				<td bgcolor="#FFFFFF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Courier New" size="2">numbox( 0, 0, 16, arg( 0 ) );</font></td>
+				<td width="50">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+</table>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Example 
+for a RicScript file which shows following output:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table13" cellpadding="2">
+	<tr>
+		<td width="80" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Output on the NXT screen</font></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<img border="0" src="../../images/RicScript_Exampl1.gif" width="306" height="198"></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="50">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="80" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		RicScript:</font></td>
+		<td bgcolor="#E0E0E0" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">desc( 0, 51, 51 );<br>
+		<br>
+		circle( 0, 20, 20, 20 );<br>
+		<br>
+		varmap( 1, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 0)= 0,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 16)= 35,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 42)= 18,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 53)= 7,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 71)= 17,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 76)= 39,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 99)= 63,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 112)= 23,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 178)= 12,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f( 205)= 35 );<br>
+		<br>
+		sprite( 2,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000011100000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000001111111000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000011111111100000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000011111111100000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000111111111110000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 111111111111111111111111111111,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000011111111100000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000011111111100000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000001111111000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000011100000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000001000000000000000 );<br>
+		<br>
+		copybits( 0, 2, 0, 0, 30, 25, 5, 8 );<br>
+		<br>
+		numbox( 0, 24, 54, maparg( 1, 0 ) );<br>
+		<br>
+		numbox( 0, 3, 51, arg(0) );<br>
+		<br>
+		line( 0, 19, 46, 19, 56 );<br>
+		<br>
+		line( 0, 20, 20, arg(0), maparg( 1, 0 ) );<br>
+		<br>
+		rect( 0, 0, 46, 49, 11 );</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

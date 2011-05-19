@@ -1,0 +1,21 @@
+void BigLettersOut( int x, int y, string s )
+{
+    int i;
+    int v[1];
+    
+    for( i=0; i<StrLen( s ); i++ )
+    {
+         v[0] = s[i];
+         GraphicOutEx( x,y, "Big_Letters.ric", v );
+         x += 10;
+    }
+}
+
+task main()
+{
+   BigLettersOut(  0,40, "Hello"  );
+   BigLettersOut( 30,25, "world!" );
+   
+   while( true )
+      ;
+}

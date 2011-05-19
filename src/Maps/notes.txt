@@ -1,0 +1,14 @@
+*.FMP files are maps that need to be opened up with Mappy
+*.MAP files are the resulting maps that can also be opened up with Mappy, but are harder to edit. This is the file that will ultimately go on the NXT.
+Note: You will need to change one line at the end of MAPWIN.INI in the Mappy folder, in order to be able to export to the correct .MAP file format we need:
+
+change the line that says:
+maptype="LW4H4A4-1"
+
+to:
+maptype="LW4H4A1-1"
+
+(4 bytes for the width field, 4 bytes for the height field, and 1 bytes per map tile)
+
+You can find Mappy and the needed PNG libraries under src\Tools\misc, or by going to http://www.tilemap.co.uk/mappy.php
+You can also find a pre-edited version of MAPWIN.INI in the src\Tools\misc folder

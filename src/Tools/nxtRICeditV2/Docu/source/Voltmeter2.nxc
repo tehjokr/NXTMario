@@ -1,0 +1,22 @@
+#define Scale_0_100_mV     0
+#define Scale_0_1_V        6
+#define Scale_0_100_mA    12
+#define Scale_0_1_A       18
+#define Scale_0_100_kOhm  24
+#define Scale_0_1MOhm     30
+
+task main()
+{
+   int voltmeter[ 2 ];
+
+   voltmeter[ 0 ] = 30;           // Pointer should show on value 30
+   voltmeter[ 1 ] = Scale_0_1_A;  // Scale is 0 to 1 A
+   
+   // Draw complete Voltmeter-Display with one call of RIC file!
+
+   GraphicOutEx( 0,0, "VOLTMETER2.RIC" ,voltmeter );
+
+   while( 1 )
+      ;
+}
+

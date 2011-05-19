@@ -6,9 +6,23 @@ http://www.kirupa.com/developer/mx2004/platform_game.htm
 (find link for the 4k Java Jump and run game and put it here)
 */
 
-//#download "Mario.rmd"        //Download the Mario Midi File
+#download "MarioLevel1.map"       //Download the Map File
+#download "MarioSprites.ric"      //Download the Level Sprites File
+#download "MarioTheme.rmd"        //Download the Mario Midi File
+#download "MarioJump.rso"         //Download the Jump Sound File
+#download "marioLeft0.ric"
+#download "marioLeft1.ric"
+#download "marioLeft2.ric"
+#download "marioLeft3.ric"
+#download "marioRight0.ric"
+#download "marioRight1.ric"
+#download "marioRight2.ric"
+#download "marioRight3.ric"
 
-#define MAP_FILE_NAME "Marlo.map"
+#define MAP_FILE_NAME "MarioLevel1.map"
+#define SPRITES_FILE_NAME "MarioSprites.ric"
+#define MUSIC_FILE_NAME "MarioTheme.rmd"
+#define JUMP_FILE_NAME "MarioJump.rso"
 #define TileWidth 8
 #define TileHeight 8
 #define ScreenWidth 100
@@ -158,7 +172,7 @@ int drawMap(int locx, int locy)
       RICValues[0] = 2;
     }
     //RICValues[0] = Map[8][13];
-    GraphicOutEx((j-1)*TileWidth + xoffset, (i-1)*TileHeight - yoffset, "MarloSprites.ric", RICValues);
+    GraphicOutEx((j-1)*TileWidth + xoffset, (i-1)*TileHeight - yoffset, SPRITES_FILE_NAME, RICValues);
     //Wait(50);
    }
   }
@@ -263,7 +277,7 @@ task main()
           velocity -= 10;        // Throw him in the air!
           falling = true;        // Gravity now affects him!
           jumping = true;        // He is on the ascending part of his jump!
-          PlayFile("Mario Jump quie.rso");
+          PlayFile(JUMP_FILE_NAME);
         }
       }
     }

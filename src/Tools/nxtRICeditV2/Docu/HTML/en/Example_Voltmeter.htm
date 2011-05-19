@@ -1,0 +1,826 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Neue Seite 1</title>
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="5">Example 
+for RIC file: Voltmeter</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Another good 
+example for using the RIC files is a pointer display like it is used by a 
+voltmeter (or amperemeter when you change the description in the scale). For the 
+output of the RIC file you only have to use one single parameter which will be 
+used for the position of the pointer. The scale within the display is designed 
+for using values from 0 to 100 (0% to 100%) – so you have to forward a single 
+parameter with a value from 0 to 100.</span></p>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">&nbsp;There are only 
+two elements for drawing on the NXT screen – but you need some other elements 
+for a complete output.</span></p>
+<table border="0" width="100%" id="table1" cellpadding="2">
+	<tr>
+		<td width="190" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Element</font></td>
+		<td width="152" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Realized by</font></td>
+		<td bgcolor="#000000" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font color="#FFFFFF" size="2" face="Arial">Parameter</font></td>
+		<td bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Comment</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Background picture for voltmeter</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Sprite</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Contain the picture which will be shown by the next element</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Output on Display</font></td>
+		<td width="152" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		CopyBit</font>s</td>
+		<td bgcolor="#E0E0E0" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Display the background image</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Transfer function for X value</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		VarMap</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Necessary for calculation of the horizontal position of end of line</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Transfer functon for Y value</font></td>
+		<td width="152" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		VarMap</font></td>
+		<td bgcolor="#E0E0E0" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Necessary for calculating of the vertical position of end of line</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Pointer</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Line</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">0 
+		: Wert</font></td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Percential value for displaying the pointer</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">&nbsp;</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">When you 
+call the RIC file, than you will see the following picture on the NXT screen:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">
+<img border="0" src="../../images/nxtricedit_voltmeter1.gif" width="177" height="105"></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">The 
+following steps will describe how you can create the RIC file:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table4" cellpadding="2">
+	<tr>
+		<td width="50" valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Step</font></td>
+		<td valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">0</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Start the program nxtRICeditV2 and create a niew RIC file.</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">1</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Insert 
+		a new RIC element Sprite which will contain the background image. Press 
+		on the following button for adding the RIC element Sprite to the RIC 
+		list:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Add_Sprite.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Afterwards you have to create an image like this:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table5" cellpadding="2">
+			<tr>
+				<td width="297">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">
+				<img border="0" src="../../images/nxtRICedit_Voltmeter2.gif" width="400" height="281"></font></td>
+				<td>
+				<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+				The lines for the scale are not random! They match to the 
+				interpolation values of both VarMap elements of the same RIC 
+				file!</span></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		It's importand that the ID of the sprite will be become 1!</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		position of the image on the available drawing area isn’t important 
+		because only the used pixels will be stored in the file. If you make a 
+		mistake during creation of the image so you can correct it every time 
+		and reduce the used area by pressing the following button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Sprite_Compress.gif" width="33" height="33"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">2</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">For 
+		bringing the image of the Sprite to the NXT screen you need a CopyBits 
+		element. Add the RIC element CopyBits to the end of your RIC list by 
+		pressing the following button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<img border="0" src="../../images/nxtRICedit_Add_CopyBits.gif" width="33" height="34"></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">For 
+		this example we have to use the complete image of the sprite – so we can 
+		adapt the width and height of the source to the size of the image of the 
+		sprite. This can be done by a click on following button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtricedit_sprite_AdaptParametersToSprite.gif" width="213" height="25"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;<p style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+		Afterwards the complete image of the sprite is selected and the 
+		destination position is [0,0].</span></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">3</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">For the 
+		next step we need two VarMap elements which can be added to the end of 
+		the RIC list by pressing twice the following button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtricedit_add_varmap.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		VarMap elements will be used to transfer the given parameter value in 
+		the range of 0 to 100 to a X and Y coordinate which stands for the end 
+		of the pointer. It’s not necessary to define all 101 possible positions 
+		– it’s enough when we define the interpolation points for every position 
+		by step of 10. The positions between will be automatically interpolated 
+		during the runtime by the NXT.</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">It’s 
+		important that the ID of the VarMap elements will be defined with 2 and 
+		3. ID 1 was already used for the ID of the Sprite element. Therefore 
+		both VarMap elements should be defined as follow:</span></p>
+		<table border="0" width="100%" id="table6" cellpadding="2">
+			<tr>
+				<td width="100" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">VarMap-ID</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">VarMap-ID</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Domain</font></td>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Range</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Domain</font></td>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Range</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">6</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">17</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">9</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">21</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">20</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">13</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">20</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">25</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">30</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">18</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">30</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">28</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">40</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">23</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">40</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">29</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">50</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">29</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">50</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">30</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">60</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">35</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">60</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">29</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">70</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">40</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">70</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">28</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">80</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">45</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">80</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">25</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">90</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">49</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">90</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">21</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">100</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">52</font></td>
+				<td width="20">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">100</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">17</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+		</table>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Values 
+		greater than 100 will be handled like the value 100.</span></p>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">You can 
+		speedup the input of all pairs of domain/ranges when you use the 
+		clipboard: Mark all 22 values (Domain from 0 to 100 and also the related 
+		range values) of the VarMap list and copy it into the clipboard. 
+		Afterwards you can update the list of the VarMap element by pressing the 
+		following button which can be detected beside the list of domain/range 
+		input fields:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtricedit_varmap_ImportFromClipboard.gif" width="25" height="25"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font size="2" face="Arial">4</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		last RIC element will be the Line. This RIC element used constant values 
+		(for the beginning of the line) and dynamic values (for the end of the 
+		pointer). You need both VarMap elements for defining the position of the 
+		end of the line. The RIC element Line will be added to the end of the 
+		RIC list by pressing the following button:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtricedit_add_line.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin:0cm;margin-bottom:.0001pt">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		attributes for the RIC element Line must be set as follow:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table8" cellpadding="2">
+			<tr>
+				<td width="100" colspan="2" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Begin of line</font></td>
+				<td width="100" colspan="2" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">End of line</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Y</font></td>
+				<td bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+			</tr>
+			<tr>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">29</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">3</font></td>
+				<td width="50" align="center" bgcolor="#DAF0FF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">V[2:0]</font></td>
+				<td width="50" align="center" bgcolor="#DAF0FF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">V[3:0]</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Pointer of the voltmeter</font></td>
+			</tr>
+			</table>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+		Attention: The end of line has to be use VarMaps – The displaying of 
+		V[2:0] means that VarMap 2 will be used together with parameter 0 for 
+		calculation of the value during the runtime!</span></td>
+	</tr>
+</table>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">After defining 
+all RIC elements of your Voltmeter you can take a look to your work by pressing 
+the following button:</span></p>
+<p style="margin-top: 0; margin-bottom: 0" align="center"><font face="Arial" size="2">
+<img border="0" src="../../images/nxtRICedit_SwitchToPreview.gif" width="137" height="33"></font></p>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">When you modify 
+the value of Parameter 0 you can detect the change of the pointer of the 
+display. The same result will be given when you call the RIC file within your 
+program. The following NXC code will show how you can use the RIC file within 
+your programs:</span></p>
+<table border="1" width="100%" id="table9" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; int</b> voltmeter[
+		<font color="#FF0000">1</font> ];</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>voltmeter[
+		<font color="#FF0000">0</font> ]= <font color="#FF0000">30</font>;&nbsp;&nbsp;&nbsp;
+		<i>// Pointer should show on value 30</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;</b></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp; <i>// Draw complete Voltmeter-Display with one call of RIC file!</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<font color="#0000FF">&nbsp;&nbsp; GraphicOutEx</font>(
+		<font color="#FF0000">0</font>,<font color="#FF0000">0</font>, <i>
+		<font color="#990033">&quot;Voltmeter.ric&quot;</font></i> ,voltmeter );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table border="0" width="100%" id="table10" cellpadding="2">
+	<tr>
+		<td width="92" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">Annotation:</font></b><font face="Arial" size="2">:</font></td>
+		<td valign="top">
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">When 
+		you would like to have a dynamically RIC file for displaying more than 
+		only a Voltmeter, than you have to change three things: Remove the text 
+		from the scale, create a new sprite with all possible texts and add a 
+		CopyBits element for output of the scale description. </span></p>
+		<table border="0" width="100%" id="table11" cellpadding="2">
+			<tr>
+				<td width="307">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<img border="0" src="../../images/nxtRICedit_Example_Voltmeter3.gif" width="279" height="503"></td>
+				<td>
+				<p style="margin:0cm;margin-bottom:.0001pt">
+				<font face="Arial" size="2"><span lang="EN-GB">You have to 
+				create the image of the sprite like you can see on the left 
+				side. Of course you can add some other texts or titles to the 
+				shown stack. You only should centre it for optimal position on 
+				the background.</span></font></p>
+				<p style="margin:0cm;margin-bottom:.0001pt">
+				<font face="Arial" size="2"><span lang="EN-GB">&nbsp;</span></font></p>
+				<p style="margin:0cm;margin-bottom:.0001pt">
+				<font face="Arial" size="2"><span lang="EN-GB">The Sprite will 
+				have the ID 2 – the same ID like the VarMap which will be 
+				defined later. But for this case it’s not a problem because the 
+				sprite will not need anymore when the CopyBits have displayed 
+				the requested text ;-)</span></font></p>
+				<p style="margin:0cm;margin-bottom:.0001pt">
+				<font face="Arial" size="2"><span lang="EN-GB">&nbsp;</span></font></p>
+				<p style="margin:0cm;margin-bottom:.0001pt">
+				<font face="Arial" size="2"><span lang="EN-GB">The gimmick for 
+				the title of the pointer display is that we will use the second 
+				CopyBits with an additional parameter for addressing the right 
+				text. This parameter will be used for defining the vertical 
+				start position for the rectangle within the new sprite. The 
+				vertical position and the width/height of the copy area is every 
+				time the same – also the destination for the output. So you can 
+				select the right text by different values of the second 
+				parameter. E.g. when this parameter will have the value 6, you 
+				can see “0-1V” on the display. When you forward the value 12, 
+				than “0-100mA” will be shown.</span></font></td>
+			</tr>
+		</table>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		additional CopyBits must be defined like this:</span></p>
+		<table border="0" width="100%" id="table12" cellpadding="2">
+			<tr>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" size="2" face="Arial">Sprite-ID</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Width</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Height</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel Y</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[1]</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">28</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">5</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">15</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">12</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			</table>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+		Attention: Yellow marked field must be defined as a parameter!</span></p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		At the end you RIC list should be the same like this: </font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="center">
+		<img border="0" src="../../images/nxtRICedit_Example_Voltmeter4.gif" width="313" height="364"></td>
+	</tr>
+</table>
+<table border="1" width="100%" id="table13" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Here is 
+		a short example for using the Voltmeter with dynamic scale text:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td width="50">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<i><font face="Courier New" size="2" color="#800080">#define 
+		Scale_0_100_mV&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+		#define Scale_0_1_V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6<br>
+		#define Scale_0_100_mA&nbsp;&nbsp;&nbsp; 12<br>
+		#define Scale_0_1_A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18<br>
+		#define Scale_0_100_kOhm&nbsp; 24<br>
+		#define Scale_0_1MOhm&nbsp;&nbsp;&nbsp;&nbsp; 30</font></i></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<i><font face="Courier New" size="2" color="#800080">#define Scale_Sound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		36</font></i></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<i><font face="Courier New" size="2" color="#800080">#define Scale_Light&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		42</font></i></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; int</b> voltmeter[
+		<font color="#FF0000">2</font> ];</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>voltmeter[
+		<font color="#FF0000">0</font> ]= <font color="#FF0000">30</font>;&nbsp;&nbsp;&nbsp;
+		<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Pointer should show on value 
+		30</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<b><font face="Courier New" size="2">&nbsp;&nbsp; </font></b>
+		<font face="Courier New" size="2">voltmeter[
+		<font color="#FF0000">1</font> ]= Scale_0_1_A;&nbsp; <i>// Scale is 0 to 
+		1 A</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<b><font face="Courier New" size="2">&nbsp;&nbsp; </font></b>
+		<font face="Courier New" size="2"><b>&nbsp;</b></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp; <i>// Draw complete 
+		Voltmeter-Display with one call of RIC file!</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<font color="#0000FF">&nbsp;&nbsp; GraphicOutEx</font>(
+		<font color="#FF0000">0</font>,<font color="#FF0000">0</font>, <i>
+		<font color="#990033">&quot;Voltmeter2.ric&quot;</font></i> ,voltmeter );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+
+<table border="1" width="100%" id="table14" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td>
+		<p class="MsoNormal" style="margin-top: #0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: #0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">You 
+		will find an extended example which used a sound and light sensor in the 
+		program </span><font face="Arial" size="2">
+		&nbsp;<a href="../../source/Voltmeter3.nxc">Voltmeter3.nxc</a></font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

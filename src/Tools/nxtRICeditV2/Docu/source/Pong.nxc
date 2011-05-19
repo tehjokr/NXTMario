@@ -1,0 +1,240 @@
+//------------------------------------------------------------------------------
+//   Pong.nxc          by Andreas Dreier
+//                        Dorfleite 17 - 86641 Staudheim - Germany
+//                        mailto: andreas@dreier-privat.de
+//
+//   Demonstration program for using pong.ric which was created by the new
+//   nxtRICeditV2
+//
+//   Connection to the NXT:    Port A: NXT motor       Sensor 1: -
+//                             Port C: -               Sensor 2: -
+//                             Port C: NXT motor       Sensor 3: -
+//                                                     Sensor 4: -
+//   Additional files on NXT:  pong.ric
+//------------------------------------------------------------------------------
+
+#define PLAYER_L 0
+#define PLAYER_R 1
+#define PADDLE_L 2
+#define PADDLE_R 3
+#define BALLX    4
+#define BALLY    5
+
+int ball_x;       // Horizontal positon of ball
+int ball_y;       // Vertical position of ball
+int ball_dx;      // Horizontal movement of ball
+int ball_dy;      // Vertical movement of ball
+
+int pad_l;        // Vertical position of left player
+int pad_r;        // Vertical position of right player
+int pad_lo;       // Old vertical position of left player
+int pad_ro;       // Old vertical position of right player
+
+int pong[ 6 ];    // Parameter array for displaying RIC-File
+
+int mirror[ 60 ] = { +2, +1,  0, -1, -2,       // Mirror matrix
+                     +2, +1,  0, -1, -2,       // for calculation
+                     +2, +1,  0, -1, -2,       // of new movement
+                                               // of ball after
+                     -2, -2, -1,  0, +1,       // collision with
+                     -2, -2, -1,  0, +1,       // player
+
+                     -2, -1,  0, +1, +2,
+                     -2, -1,  0, +1, +2,
+
+                     -1,  0, +1, +2, +2,
+                     -1,  0, +1, +2, +2,
+
+                     +2, +2, +1, -1, -2,
+                     +2, +2, +1, -1, -2,
+                     +2, +2, +1, -1, -2  };
+
+//------------------------------------------------------------------------------
+// Calculate new movement in comparison with given distance between ball and
+// one of the paddles. If paddle will be hit than return TRUE - if miss than
+// FALSE.
+//------------------------------------------------------------------------------
+
+bool CalculateMirror( int delta )
+{
+    int offset;
+    
+    if( ( delta >= -4 ) &&
+        ( delta <=  7 )    )
+    {
+        offset  = 22 + delta * 5 + ball_dy;
+        ball_dy = mirror[ offset ];
+        ball_dx = -ball_dx;
+        
+        return TRUE;            // Ball hit the player
+    }
+    else return FALSE;          // Ball miss the player -> Game over :-(
+}
+
+
+//------------------------------------------------------------------------------
+// Calculate new paddle pos - as a addon of last position and relative movement
+// of rotationsensor
+//------------------------------------------------------------------------------
+
+void GetPaddlePos()
+{
+   int pad_ln;
+   int pad_rn;
+
+   // Get current position from rotation sensor of motors
+   // and calculate delta again old position and add it to the
+   // internal position:
+
+   pad_ln = MotorTachoCount(OUT_A);
+   pad_rn = MotorTachoCount(OUT_C);
+
+   pad_l  = pad_l + pad_lo - pad_ln;
+   pad_r  = pad_r + pad_ro - pad_rn;
+
+   pad_lo = pad_ln;
+   pad_ro = pad_rn;
+
+   // Correct position when it's outside the upper and lower border
+
+   if( pad_l <  1 ) pad_l = 1;
+   if( pad_l > 55 ) pad_l = 55;
+
+   if( pad_r <  1 ) pad_r = 1;
+   if( pad_r > 55 ) pad_r = 55;
+
+   pong[ PADDLE_L ] = pad_l;
+   pong[ PADDLE_R ] = pad_r;
+}
+
+
+//------------------------------------------------------------------------------
+// Given player lose and get an extra point. Than the game will be continued
+// when the unlucky player will press the center button of the NXT
+//------------------------------------------------------------------------------
+
+void GameLoose( int player )
+{
+   pong[ player ] += 1;
+
+   // Calculate new start position and ball direction
+   
+   if( player == PLAYER_L )
+   {
+       ball_x  = 5;
+       ball_dx = 1;
+       ball_dy = 0;
+   }
+   else
+   {
+       ball_x  = 91;
+       ball_dx = -1;
+       ball_dy =  0;
+   }
+   
+   pong[ BALLX ] = ball_x;
+   
+   PlayTone( 262, 400 );
+   Wait( 500 );
+
+   while( ! ButtonPressed( BTNCENTER, TRUE ) )
+   {
+       GetPaddlePos();
+       
+       if( player  == PLAYER_L )
+           ball_y = pad_l+2;
+       else
+           ball_y = pad_r+2;
+           
+       pong[ BALLY ] = ball_y;
+       GraphicOutEx( 0,0, "Pong.ric" ,pong, TRUE );
+       
+       TextOut( 20, LCD_LINE3, "  Press   " );
+       TextOut( 20, LCD_LINE4, "  CENTER  " );
+       TextOut( 20, LCD_LINE5, "for start!" );
+       
+       Wait( 50 );
+   }
+}
+
+//------------------------------------------------------------------------------
+// Main procedure
+//------------------------------------------------------------------------------
+
+task main()
+{
+   // Initialize
+   
+   pong[ PLAYER_L ]= 0;    // Points of left player
+   pong[ PLAYER_R ]= 0;    // Points of right player
+
+   ball_x = 48;     // start position of ball
+   ball_y = 30;     //
+   
+   ball_dx = 1;     // start direction for ball
+   ball_dy = 1;     //
+   
+   pad_l   = 28;    // Initial position for the paddles
+   pad_r   = 28;    //
+
+   // First read for knowing old position
+   
+   pad_lo = MotorTachoCount( OUT_A );
+   pad_ro = MotorTachoCount( OUT_B );
+
+   // Repeat game until one player has lose 9 balls
+
+   while( ( pong[ PLAYER_L ] < 9 ) &&
+          ( pong[ PLAYER_R ] < 9 )    )
+   {
+       GetPaddlePos();
+   
+       // Update of position of ball
+       
+       ball_x += ball_dx;
+       ball_y += ball_dy;
+       
+       // Check ball position again upper and lower borders
+       
+       if( ball_y <= 1 )  ball_dy = - ball_dy;
+       if( ball_y >= 59 ) ball_dy = - ball_dy;
+       
+       // Draw complete Pong-Display with one call of RIC file!
+
+       pong[ PADDLE_L ]= pad_l;   // Vertical position of left player
+       pong[ PADDLE_R ]= pad_r;   // Vertical position of right player
+       pong[ BALLX    ]= ball_x;  // Horizontal position of ball
+       pong[ BALLY    ]= ball_y;  // Vertical position of ball
+       GraphicOutEx( 0,0, "Pong.ric" ,pong, TRUE );
+       
+       // Check position again the players
+
+       if( ( ball_x  <= 4 ) &&
+           ( ball_dx <  0 )    )
+           if( ! CalculateMirror( pad_l - ball_y ) )
+               GameLoose( PLAYER_L );
+
+       if( ( ball_x  >= 91 ) &&
+           ( ball_dx >   0 )    )
+           if( ! CalculateMirror( pad_r - ball_y ) )
+               GameLoose( PLAYER_R );
+
+       // wait 50 ms for displaying/calculating next position
+
+       Wait( 50 );
+   }
+   
+   // And the winner is ...
+   
+   TextOut( 0,LCD_LINE1, "The winner is", TRUE );
+   
+   if( pong[ PLAYER_L ] >= 9 ) TextOut( 10, LCD_LINE3, "right player!" );
+   if( pong[ PLAYER_R ] >= 9 ) TextOut( 10, LCD_LINE3, "left player!" );
+   
+   while( 1 )
+      ;
+}
+
+//------------------------------------------------------------------------------
+//  PONG.NXC - End of program
+//------------------------------------------------------------------------------

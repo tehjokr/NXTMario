@@ -1,0 +1,929 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Neue Seite 3</title>
+<base target="_self">
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0">
+<font size="5" face="Arial">RIC-Elemente</font></p>
+<p style="margin-top: 0; margin-bottom: 0">
+&nbsp;</p>
+<table border="0" width="100%" id="table43">
+	<tr>
+		<td width="60" align="left" valign="top">
+<img border="0" src="../../images/nxtRICedit_Sprite.gif" width="48" height="38"></td>
+		<td align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="5">Sprite</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="60" align="left" valign="top">&nbsp;</td>
+		<td align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Sprites werden nur für die Definition von monochromen Bitmaps verwendet. 
+		Die Ausgabe auf den NXT-Bildschirm erfolgt später im Zusammenspiel mit 
+		CopyBits. Es können bis zu 10 unabhängige Sprites innerhalb eines 
+		RIC-Files definiert werden. Wird eine Sprite ID ein zweites Mal 
+		verwendet, dann kann danach auf das zuvor definierte Sprite nicht mehr 
+		zugegriffen werden.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="60" align="left" valign="top">&nbsp;</td>
+		<td align="left" valign="top">
+		<table border="0" width="100%" id="table44">
+			<tr>
+				<td width="120" bgcolor="#000000" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Parameter</font></td>
+				<td bgcolor="#000000" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Funktion</font></td>
+				<td bgcolor="#000000" width="100" align="center" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Wertebereich</font></td>
+				<td bgcolor="#000000" width="80" align="center" valign="top">
+				<font color="#FFFFFF" size="2" face="Arial">Parameter</font></td>
+				<td bgcolor="#000000" width="50" align="center" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">VarMap</font></td>
+			</tr>
+			<tr>
+				<td width="120" bgcolor="#CCCCCC" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Sprite ID</font></td>
+				<td bgcolor="#CCCCCC" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Definiert die Nummer des Sprites 
+				innerhalb einer RIC-Datei</font></td>
+				<td bgcolor="#CCCCCC" width="100" align="center" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1 - 10</font></td>
+				<td bgcolor="#CCCCCC" width="80" align="center" valign="top">&nbsp;</td>
+				<td bgcolor="#CCCCCC" width="50" align="center" valign="top">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="60" align="left" valign="top">&nbsp;</td>
+		<td align="left" valign="top">
+		<table border="0" width="100%" id="table45">
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Elementgröße:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2"><b>12+</b> 
+				Byte (Speicherbedarf ist Abhängig von der Bitmapgröße)</font></td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">&nbsp;</td>
+				<td align="left" valign="top">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Eingabemodi:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Für das Bearbeiten von Sprites gibt 
+				es drei verschiedene Eingabemodi:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table47" cellpadding="2" cellspacing="4">
+					<tr>
+						<td width="86">
+						<p style="margin-top: 0; margin-bottom: 0"><b>
+						<font face="Arial" size="2">Zeichnen</font></b></td>
+						<td>
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Point.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Line.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Rectangle.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FRectangle.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Ellipse.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FEllipse.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Circle.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FCircle.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Text.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Fill.gif" width="33" height="33">
+						</font></td>
+					</tr>
+					<tr>
+						<td width="86">
+						<p style="margin-top: 0; margin-bottom: 0"><b>
+						<font face="Arial" size="2">Markierung</font></b></td>
+						<td>
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MarkArea.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_CopyToClipboard.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Delete.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_RotateLeft.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_RotateRight.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollUp.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollRight.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollDown.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollLeft.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Invert.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MirrorH.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MirrorV.gif" width="33" height="33"></font></td>
+					</tr>
+					<tr>
+						<td width="86">
+						<p style="margin-top: 0; margin-bottom: 0"><b>
+						<font face="Arial" size="2">Stempel</font></b></td>
+						<td>
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Import.gif" width="33" height="33">
+						<img border="0" src="../../images/nxtRICedit_Sprite_InsertFromClipboard.gif" width="33" height="33"></font></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Zeichenbereich:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Der Zeichenbereich ist 1024 x 512 
+				Punkte groß - also viel größer wie der vom NXT darstellbare 
+				Bereich von 100 x 64 Punkte. Da mit dem RIC-Element CopyBits ein 
+				Ausschnitt der im Sprite definierten Grafik ausgegeben werden 
+				kann, kann also auch ein größerer Bereich wie 100 x 64 Punkte 
+				benutzt werden. </font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Das Programm nxtRICedit 
+				unterscheidet zwischen drei verschiedenen Punktearten:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table48" cellpadding="2">
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Pixel_Unused.gif" width="21" height="21"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Punkt wurde noch nicht 
+						verwendet</font></td>
+					</tr>
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Pixel_White.gif" width="21" height="21"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Punkt wurde weiß definiert</font></td>
+					</tr>
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Pixel_Black.gif" width="21" height="21"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Punkt wurde schwarz 
+						definiert</font></td>
+					</tr>
+				</table>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Zu Beginn sind alle Punkte als noch 
+				nicht verwendet definiert. Erst durch das Zeichnen, Stempeln 
+				oder einer Markierungsoperation wird der Punkt weiß oder schwarz 
+				eingefärbt. Nur eingefärbte Punkte sind Bestandteil des Sprites. 
+				Unbenutzte Punkte werden im Sprite nicht gespeichert. Allerdings 
+				werden unbenutzte Punkte in weiße Punkte gewandelt, wenn Sie 
+				sich innerhalb der äußeren weißen oder schwarzen Punkten 
+				befindet. Das heißt, dass der benutzte Bereich automatisch 
+				erweitert wird.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Der verwendet Bereich wird am Rand 
+				der Zeichenmatrix innerhalb der Skalierung mit kleinen Dreiecken 
+				angedeutet und steht auch genau beziffert unten links als &quot;Image 
+				size&quot;:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0" align="center">
+				<img border="0" src="../../images/nxtRICedit_Sprite_RangeMarker.gif" width="591" height="383"></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table49" cellpadding="2">
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Compress.gif" width="33" height="33"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Mit dieser Funktion kann der 
+						verwendete Bereich minimiert werden, wenn sich im 
+						äußeren Bereich nur noch weiße Punkte befinden. Weiße 
+						Punkte werden also in unbenutzte Punkte umgewandelt und 
+						der verwendete Bereich reduziert sich entsprechend, was 
+						erheblich Speicher einsparen wird. Zu beachten ist 
+						jedoch, dass immer 8 horizontal nebeneinander liegende 
+						Punke in einem Byte zusammengefasst werden. D.h. dass 
+						eine optische Einsparung u. U. keine speichertechnische 
+						Einsparung erbringt. Wenn aber zum Beispiel von 9 Punkte 
+						auf 8 Punkte horizontal reduziert wird, dann halbiert 
+						sich der Speicherverbrauch je Zeile!</font></td>
+					</tr>
+				</table>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Anzeige:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Nachdem nun im neuen Programm auch 
+				bis zu 1024 x 512 Punkte definiert werden können - was die Größe 
+				der angezeigten Zeichenfläche weit übertrifft - wurde neben der 
+				Möglichkeit der Verschiebung auch ein Zoom eingebaut. Somit kann 
+				jeder Bereich der nutzbaren Zeichenfläche angezeigt und für 
+				exakte Bearbeitung auch weit hineingezoomt werden. Das 
+				Verschieben erfolgt, wie bei jedem Windows-Programm, über die 
+				Scrollbalken unten und rechts. Der Zoom kann über das Trackbar 
+				unten rechts verändert werden. Mit dem Button
+				<img border="0" src="../../images/nxtRICedit_Sprite_ZoomNXT.gif" width="33" height="33" align="top"> 
+				gelangt man zurück zur NXT-Ansicht von 100 x 64 Punkten.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Farbe wählen:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Wie bereits schon erwähnt kann man 
+				monochrome Grafiken erstellen. Für die Wahl der Farbe sind im 
+				Zeichenmodus die beiden Maustasten zuständig:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table50" cellpadding="2">
+					<tr>
+						<td width="120" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Linke Maustaste</font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">: Zeichne in schwarz</font></td>
+					</tr>
+					<tr>
+						<td width="120" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Rechte Maustaste</font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">: Zeichne in weiß</font></td>
+					</tr>
+				</table>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">In der nachfolgenden Tabelle der 
+				Funktionen kann man in der rechten Spalte erkennen, welche 
+				Farboptionen bei den wichtigsten Zeichenfunktionen zur Verfügung 
+				stehen:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table51" cellpadding="2">
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Farbwahl mit linker und 
+						rechter Maustaste</font></td>
+					</tr>
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_W.gif" width="32" height="16"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Es können die Punkte nur auf 
+						weiß gesetzt werden</font></td>
+					</tr>
+					<tr>
+						<td width="40" align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_Bitmap.gif" width="32" height="16"></font></td>
+						<td align="left" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Einfügen von kompletten 
+						Grafiken im Stempelmodus</font></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				&nbsp;</td>
+				<td align="left" valign="top">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Funktionen:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Folgende Modifikationsfunktionen 
+				stehen bei der Bearbeitung der Spritesbilder zur Verfügung:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<table border="0" width="100%" id="table52" cellpadding="2">
+					<tr>
+						<td width="30" bgcolor="#000000" align="center" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font color="#FFFFFF" size="2" face="Arial">Icon</font></td>
+						<td width="180" bgcolor="#000000" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font color="#FFFFFF" size="2" face="Arial">Funktion</font></td>
+						<td bgcolor="#000000" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font color="#FFFFFF" size="2" face="Arial">Beschreibung</font></td>
+						<td bgcolor="#000000" width="50" align="center" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2" color="#FFFFFF">Farbe</font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Point.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne einzelne Punkte</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Solange die Maustaste 
+						gedrückt wird, werden Punkte eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Line.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne eine Linie</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Startpunkt der Linie wird 
+						beim Niederdrücken der Maustaste festgelegt. Endpunkt 
+						wird durch das Loslassen der Maustaste definiert.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Rectangle.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne ein Rechteck</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Die erste Ecke wird beim 
+						Niederdrücken der Maustaste definiert. Das Loslassen der 
+						Maustaste definiert die gegenüberliegende Ecke des 
+						Rechtecks.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FRectangle.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne ein gefülltes 
+						Rechteck</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Die erste Ecke wird beim 
+						Niederdrücken der Maustaste definiert. Das Loslassen der 
+						Maustaste definiert die gegenüberliegende Ecke des 
+						Rechtecks. Das Rechteck wird mit der gleichen Farbe wie 
+						der Rahmen gefüllt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Ellipse.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne eine Ellipse</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Das Niederdrücken der 
+						Maustaste definiert die erste Ecke des umspannenden 
+						virtuellen Rechtecks. Wenn die Taste wieder losgelassen 
+						wird, wird die gegenüberliegende Ecke gesetzt. Im 
+						inneren dieses virtuellen Rechtecks wird die Ellipse 
+						eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FEllipse.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne eine gefüllte 
+						Ellipse</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Das Niederdrücken der 
+						Maustaste definiert die erste Ecke des umspannenden 
+						virtuellen Rechtecks. Wenn die Taste wieder losgelassen 
+						wird, wird die gegenüberliegende Ecke gesetzt. Im 
+						inneren dieses virtuellen Rechtecks wird die Ellipse 
+						eingefügt. Die Ellipse wird mit der gleichen Farbe wie 
+						der Rahmen gefüllt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Circle.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne einen Kreis</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Der Mittelpunkt des Kreises 
+						wird durch das Drücken der Maustaste definiert. Wenn 
+						dieselbe Taste wieder losgelassen wird, wird der Radius 
+						des Kreises festgelegt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_FCircle.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Zeichne einen gefüllten 
+						Kreis</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Der Mittelpunkt des Kreises 
+						wird durch das Drücken der Maustaste definiert. Wenn 
+						dieselbe Taste wieder losgelassen wird, wird der Radius 
+						des Kreises festgelegt. Der Kreis wird mit der gleichen 
+						Farbe wie der Rahmen gefüllt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Text.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Füge Text ein</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Sobald mit der Maus in die 
+						Zeichenfläche geklickt wird, erscheint ein Dialog, in 
+						dem man den gewünschten Text und die Formatierung der 
+						Schrift eingeben kann. Wird dieser Dialog bestätigt, so 
+						kann der Text mit dem nächsten Mausklick eingefügt 
+						werden.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Fill.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Fülle Bereich mit Farbe</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Füllt den Bereich an der 
+						Stelle, an die in die Grafik geklickt wird. Begrenzung 
+						für das Füllen ist die gleiche Farbe bzw. die Grenzen 
+						des bereits benutzten Bereichs.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_BW.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Import.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Importiere eine Grafik</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Öffnet einen modales 
+						Fenster, in dem man die gewünschte Datei auswählen kann. 
+						Außerdem kann der Schwellwert für die schwarz/weiß-Unterscheidung 
+						und die Größe der Grafik für das Einfügen festgelegt 
+						werden.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_Bitmap.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MarkArea.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Markiere einen Bereich</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Mit der Maus kann nun ein 
+						rechteckiger Bereich in der Zeichenfläche markiert 
+						werden. Sobald die Markierung gesetzt ist, erscheinen 
+						weitere Buttons, die diese Markierung bearbeiten</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_CopyToClipboard.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Kopiere markierten Bereich 
+						in Zwischenablage</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Kopiert den markierten 
+						Bereich in die interne Zwischenablage, damit er später 
+						wieder verwendet werden kann</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_InsertFromClipboard.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Zwischenablage wieder 
+						einfügen</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Nimmt das in der 
+						Zwischenablage vorhandene Bitmap und wechselt in den 
+						Stempelmodus. Hierbei kann der grün markierte Bereich 
+						beliebig oft auf das Spriteraster kopiert werden.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_Bitmap.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Delete.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Lösche markierten Bereich</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Löscht den markierten 
+						Bereich und überschreibt ihn mit einem weißen 
+						ausgeüllten Rechteck.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_W.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_RotateLeft.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Rotiere markierten Bereich 
+						nach links</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Kopiert den markierten 
+						Bereich in die interne Zwischenablage, rotiert ihn um 90 
+						Grad gegen den Uhrzeigersinn und wechselt in den 
+						Stempelmodus. Hier kann dann das gedrehte Bild beliebig 
+						oft eingefügt werden.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_Bitmap.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_RotateRight.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Rotiere markierten Bereich 
+						nach rechts</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Kopiert den markierten 
+						Bereich in die interne Zwischenablage, rotiert ihn um 90 
+						Grad im den Uhrzeigersinn und wechselt in den 
+						Stempelmodus. Hier kann dann das gedrehte Bild beliebig 
+						oft eingefügt werden.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">
+						<img border="0" src="../../images/nxtRICedit_Color_Bitmap.gif" width="32" height="16"></font></td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollUp.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Scrolle markierten Bereich 
+						nach oben</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Verschiebt den gesamten 
+						markierten Bereich um einen Pixel nach oben. Die Punkte 
+						der obersten Reihe werden dann in der unteren Reihe 
+						wieder eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollRight.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Scrolle markierten Bereich 
+						nach Rechts</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Verschiebt den gesamten 
+						markierten Bereich um einen Pixel nach rechts. Die 
+						Punkte der rechten Spalte werden dann in der linken 
+						Spalte wieder eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollDown.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Scrolle markierten Bereich 
+						nach unten</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Verschiebt den gesamten 
+						markierten Bereich um einen Pixel nach unten. Die Punkte 
+						der untersten Reihe werden dann in der obersten Reihe 
+						wieder eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_ScrollLeft.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Scrolle markierten Bereich 
+						nach links</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Verschiebt den gesamten 
+						markierten Bereich um einen Pixel nach links. Die Punkte 
+						der linken Spalte werden dann in der rechten Spalte 
+						wieder eingefügt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Invert.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Invertierte markierten 
+						Bereich</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Invertiert alle Pixel im 
+						markierten Bereich. Unbenutzte Pixel werden dann als 
+						weiß betrachtet und schwarz eingefärbt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MirrorH.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Spiegle markierten Bereich 
+						horizontal</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Spiegele den gesamten 
+						markierten Bereich horizontal. Unbenutzte Pixel werden 
+						als weiß betrachtet und auch als solche gespiegelt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_MirrorV.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Spiegle markierten Bereich 
+						vertikal</font></td>
+						<td bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Spiegele den gesamten 
+						markierten Bereich vertikal. Unbenutzte Pixel werden als 
+						weiß betrachtet und auch als solche gespiegelt.</font></td>
+						<td width="50" align="center" bgcolor="#E0E0E0" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="30" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">
+						<img border="0" src="../../images/nxtRICedit_Sprite_Undo.gif" width="33" height="33"></font></td>
+						<td width="180" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font size="2" face="Arial">Letzte Änderung zurücknehmen</font></td>
+						<td bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial" size="2">Nimmt die letzte Änderung 
+						seit der Auswahl des RIC-Element Sprites aus der 
+						RIC-Elementeliste zurück. Der Undo-Buffer ist ein 
+						Ringbuffer und auf maximal 50&nbsp; Änderungen 
+						ausgelegt.</font></td>
+						<td width="50" align="center" bgcolor="#CCCCCC" valign="top">
+						<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				&nbsp;</td>
+				<td align="left" valign="top">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Texteingaben:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Für die Eingaben von Text erscheint 
+				erst ein Popup-Fenster, in dem der einzugebende Text, die 
+				Auswahl des Fonts und die Einstellung des Fonts gemacht wird. 
+				Alle Eingaben lassen das zu erwartende Erscheinungsbild im 
+				Preview erkennen.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p align="center" style="margin-top: 0; margin-bottom: 0">
+				<img border="0" src="../../images/nxtRICedit_Sprite_Text1.gif" width="495" height="279"></p>
+				<p align="center" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Sobald OK gedrückt wird, erscheint 
+				der Schriftzug in roter Farbe und kann mit der linken (schwarz) 
+				oder der rechten (weiß) Maustaste auf dem zur Verfügung 
+				stehenden Zeichenbereich platziert werden.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p align="center" style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">
+				<img border="0" src="../../images/nxtRICedit_Sprite_Text2.gif" width="511" height="383"></font></td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Import:</font></td>
+				<td align="left" valign="top">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Auch nach der Aktivierung des 
+				Imports von externen Zeichnungen erscheint ein Popup-Fenster, in 
+				dem die zu importierende Datei ausgewählt werden kann. Außerdem 
+				lassen sich hier auch die Größe der einzufügenden Grafik und der 
+				Schwellwert für die schwarz/weiß-Unterscheidung einstellen:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p align="center" style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">
+				<img border="0" src="../../images/nxtRICedit_Sprite_Import1.gif" width="624" height="596"></font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">Das einzufügende Bild wird nach 
+				Bestätigung zum Import als hell-/dunkelgrünes Bild dargestellt, 
+				welches wie ein Stempel auf das bereits vorhandene Bild kopiert 
+				werden kann:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p align="center" style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">
+				<img border="0" src="../../images/nxtRICedit_Sprite_Import2.gif" width="511" height="383"></font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">
+&nbsp;</p>
+
+</body>
+
+</html>

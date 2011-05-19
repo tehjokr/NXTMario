@@ -1,0 +1,719 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>RIC-Beispiel</title>
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="5">
+RIC-Beispiel: Neuer Zeichensatz</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Das 
+nächste Beispiel zeigt die mögliche Realisierung eines Wunsches, der schon 
+mehrfach geäußert wurde: Einen neuen Zeichensatz für den NXT. Egal ob er nun 
+größer oder kleiner als der im NXT verfügbare Zeichensatz mit seiner 6x8 Matrix 
+sein soll - mit der richtigen RIC-Datei und ein paar Zeilen Programmcode kann 
+auch dieser Wunsch realisiert werden.</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Am Anfang 
+steht die Frage, wie groß die Buchstaben des neuen Zeichensatzes sein sollen. 
+Für unser Beispiel verwenden wir 10 x 10 Punkte großes Raster, welches für die 
+bessere Erkennbarkeit der Buchstaben links und unten einen Abgrenzungsstrich 
+enthält:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">
+<img border="0" src="../../images/nxtRICedit_Example_Font1.gif" width="61" height="61">&nbsp;&nbsp;
+<img border="0" src="../../images/nxtricedit_example_font2.gif" width="61" height="61">&nbsp;&nbsp;
+<img border="0" src="../../images/nxtRICedit_Example_Font3.gif" width="61" height="61"></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">Selbstverständlich kann später auf 
+die linke untere Markierung verzichtet werden. An dieser Stelle hilft diese uns 
+aber, den Aufbau der RIC-Datei besser zu verstehen. </font> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">In wie weit der Zeichensatz innerhalb 
+der RIC-Datei abgebildet werden soll, ist jedem selbst überlassen - jedoch 
+reicht es in der Regel aus, wenn nur die Zeichen 32 bis 128 definiert werden, da 
+die Zeichen unterhalb von 32 in der Regel nur Steuerzeichen sind und jenseits 
+der 128 nur Sonderzeichen, die oft nicht gebraucht werden. </font> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">Somit wird die RIC-Datei für den 
+neuen Zeichensatz wie folgt aufgebaut sein:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table6" cellpadding="2">
+	<tr>
+		<td width="190" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">RIC-Element</font></td>
+		<td width="152" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font size="2" face="Arial" color="#FFFFFF">Realisierung</font></td>
+		<td bgcolor="#000000" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font color="#FFFFFF" size="2" face="Arial">Parameter</font></td>
+		<td bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font size="2" face="Arial" color="#FFFFFF">Anmerkung</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Grafik für den Zeichensatz</font></td>
+		<td width="152" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Sprite</font></td>
+		<td bgcolor="#CCCCCC" width="66" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Enthält die Grafik für alle darzustellende Zeichen</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Umrechnungsfunktion X-Wert</font></td>
+		<td width="152" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		VarMap</font></td>
+		<td bgcolor="#E0E0E0" width="66" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Basis für die Berechnung der Zeichenmatrix-Position</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Umrechnungsfunktion Y-Wert</font></td>
+		<td width="152" bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		VarMap</font></td>
+		<td bgcolor="#CCCCCC" width="66" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#CCCCCC" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Basis für die Berechnung der Zeichenmatrix-Position</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Ausgabe des Buchstabens</font></td>
+		<td width="152" bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		CopyBits</font></td>
+		<td bgcolor="#E0E0E0" width="66" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">0 
+		: Zeichen</font></td>
+		<td bgcolor="#E0E0E0" align="left" valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Kopiert die Buchstabenmatrix auf den NXT-Bildschirm</font></td>
+	</tr>
+	</table>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">&nbsp;</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">Hier nun 
+die notwendigen Schritte, um die RIC-Datei zu erstellen:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table7" cellpadding="2">
+	<tr>
+		<td width="50" valign="top" bgcolor="#000000" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font size="2" face="Arial" color="#FFFFFF">
+		Schritt</font></td>
+		<td valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font size="2" face="Arial" color="#FFFFFF">
+		Beschreibung</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">0</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Starten wir nun das Programm nxtRICeditV2 und beginnen mit einer neuen RIC-Datei</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">1</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Zuerst wird ein neues Sprite-Element eingefügt, welches die Grafik für 
+		die Buchstaben des neuen Zeichensatz enthalten wird. Hierzu einfach einmal auf den Button 
+		mit folgendem Icon drücken:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Add_Sprite.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Danach eine Grafik mit folgendem Bild erstellen:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<img border="0" src="../../images/nxtRICedit_Example_Font4.gif" width="534" height="500"></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Wichtig ist, dass das Sprite-Element die Sprite-ID 1 bekommt!</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Jeder Buchstaben wird innerhalb eines 10 x 10 Punkte großen Rasters 
+		definiert. 16 Buchstaben in einer Zeile. Unten links steht das erste 
+		Zeichen - hier mit dem ASCII-Code 32, was einem Leerzeichen entspricht.</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Die Platzierung der Grafik auf der zur Verfügung stehenden Zeichenfläche 
+		ist nicht wichtig, da ohnehin nur die benutzten Punkte später 
+		abgespeichert werden. Sollten Fehler bei der Eingabe der Grafik gemacht 
+		werden, so können die Punkte einfach dadurch entfernt werden, wenn der 
+		benötigte Speicherplatz wieder minimiert wird:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Sprite_Compress.gif" width="33" height="33"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">2</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Als nächstes Element in der RIC-Liste wird ein VarMap-Element benötigt. 
+		Dieses dient zur Umrechnung der Nummer des Buchstabens (ASCII-Wert) in 
+		den X-Wert der Position innerhalb der Sprite-Matrix. Zum Glück muss 
+		nicht für jeden Buchstaben ein eigener Stützwert erstellt werden! Wir 
+		benötigen nur immer für das erste und das letzte Zeichen in einer Zeile 
+		den Stützwert - die Positionen dazwischen werden dann wieder über 
+		lineare Interpolation ermittelt. Somit sieht die &quot;Umrechnung&quot; für den 
+		ASCII-Wert in den X-Positionswert wie folgt aus:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="center">
+		<img border="0" src="../../images/nxtRICedit_Example_Font5.gif" width="597" height="411"></p>
+		<p style="margin-top: 0; margin-bottom: 0" align="left">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="left">
+		<font size="2" face="Arial">Um die Eingabe der Punkte zu erleichtern, 
+		können auch die Domain/Range-Paare aus folgender Tabelle dafür kopiert 
+		werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0" align="left">&nbsp;</p>
+		<table border="0" width="100%" id="table8" cellpadding="2">
+			<tr>
+				<td width="100" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">VarMap-ID</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="20">&nbsp;</td>
+				<td rowspan="15">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Wichtig ist an dieser Stelle, das 
+				das VarMap die ID 2 bekommt, damit das zuvor definierte Sprite 
+				mit der ID 1 nicht &quot;überschrieben&quot; wird.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Die Domain- und Range-Werte der 
+				Stützpunkte lassen sich wie folgt erklären:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Links beginnt das Ausschneiden an 
+				der horizontalen Position 0, wogegen das letzte Zeichen in der 
+				Zeile den Wert 150 (linke untere Ecke des Zeichens in der 
+				Grafik) hat. Es müssen nun für alle Zeilen für jeweils das linke 
+				und das rechte Zeichen die horizontale Startposition definiert 
+				werden.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Die einzige Ausnahme ist der letzte 
+				Stützwert für das Zeichen 128, welches nicht mehr auf der Grafik 
+				im Sprite definiert ist. Hier wird hinterlegt, dass alles ab 
+				Zeichen 128 den X-Wert 0 bekommt.</font></td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Domain</font></td>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Range</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">32</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">47</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">48</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">63</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">64</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">79</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">80</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">95</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">96</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">111</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">112</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">127</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">150</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">128</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Für das Kopieren kann wieder der Button rechts von der List mit den 
+		Domain/Range-Werten mit folgendem Icon verwendet werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">&nbsp;<img border="0" src="../../images/nxtricedit_varmap_ImportFromClipboard.gif" width="25" height="25"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">3</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Neben der Umrechnung von ASCII-Wert in die horizontale Startposition, 
+		benötigen wir auch eine Umrechnung in die vertikale Startposition. Auch 
+		dieses wird wieder über ein VarMap-Element erfolgen. Dieses sieht 
+		jedoch, im Gegensatz zum letzten VarMap-Element, etwas anders aus:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="center">
+		<img border="0" src="../../images/nxtRICedit_Example_font6.gif" width="597" height="411"></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="left">
+		<font size="2" face="Arial">Auch hier kann die Eingabe der 
+		Domain/Range-Paare erleichtert werden, wenn die Werte aus folgender 
+		Tabelle dafür kopiert werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0" align="left">&nbsp;</p>
+		<table border="0" width="100%" id="table9" cellpadding="2">
+			<tr>
+				<td width="100" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">VarMap-ID</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td width="20">&nbsp;</td>
+				<td rowspan="14">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Wichtig ist an dieser Stelle, das 
+				das VarMap die ID 3 bekommt, damit das zuvor definierte Sprite 
+				mit der ID 1 und das erste VarMap-Element mit der ID 2 nicht 
+				&quot;überschrieben&quot; werden.</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Die Domain- und Range-Werte der 
+				Stützpunkte lassen sich wie folgt erklären:</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Links beginnt das Ausschneiden an 
+				der vertikalen Position 0. Das Gleiche gilt auch für das letzte 
+				Zeichen in der Zeile. Eine Zeile höher wird ab der vertikalen 
+				Position 10 für die gesamte Zeile positioniert ... usw..</font></p>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Zeichen ab 128 werden wieder auf die 
+				Zeile 0 gesetzt. Das bewirkt zusammen mit dem anderen VarMap, 
+				dass für diese Zeichen ein Leerzeichen ausgegeben wird ;-)</font></td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Domain</font></td>
+				<td width="100" bgcolor="#000000" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" face="Arial" size="2">Range</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">47</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">48</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">63</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">64</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">20</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">79</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">20</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">80</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">30</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">95</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">30</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">96</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">40</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">111</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">40</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">112</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">50</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">127</font></td>
+				<td width="100" bgcolor="#CCCCCC" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">50</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">128</font></td>
+				<td width="100" bgcolor="#E0E0E0" align="right">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="20">&nbsp;</td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Für das Kopieren kann wieder der Button rechts von der List mit den 
+		Domain/Range-Werten mit folgendem Icon verwendet werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">&nbsp;<img border="0" src="../../images/nxtricedit_varmap_ImportFromClipboard.gif" width="25" height="25"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b>
+		<font face="Arial" size="2">4</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Das letzte - aber auch das wichtigste - RIC-Element in dieser Datei ist 
+		natürlich das CopyBits, welches aus der oben definierten Sprite mit der 
+		ID 1 und mit Hilfe der beiden VarMap-Elementen mit der ID 2 und 3 den 
+		richtigen Ausschnitt mit dem gewünschten Buchstaben auf den 
+		NXT-Bildschirm bringt. Um das notwendige RIC-Element CopyBits an das 
+		Ende der Liste einzufügen muss einfach nur auf folgenden Button gedrückt 
+		werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_CopyBits.gif" width="33" height="34"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Folgende Einstellungen müssen nun für das CopyBits-Element definiert werden:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table10" cellpadding="2">
+			<tr>
+				<td width="50" align="center" bgcolor="#000000">
+				<font color="#FFFFFF" size="2" face="Arial">Sprite-ID</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Width</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Height</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel Y</font></td>
+				<td bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font color="#FFFFFF" size="2" face="Arial">Beschreibung</font></td>
+			</tr>
+			<tr>
+				<td width="50" align="center" bgcolor="#CCCCCC"><font size="2" face="Arial">1</font></td>
+				<td width="50" align="center" bgcolor="#DAF0FF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">V[2:0]</font></td>
+				<td width="50" align="center" bgcolor="#DAF0FF">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">V[3:0]</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">10</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Kopierbereich für das Zeichen</font></td>
+			</tr>
+			</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Hellblau markierte Felder müssen als VarMap-Werte definiert werden!</font></p>
+		</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Nachdem 
+nun alle notwendigen RIC-Elemente definiert wurden, kann das Ergebnis über 
+folgenden Button betrachtet werden:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center"><font face="Arial" size="2">
+<img border="0" src="../../images/nxtRICedit_SwitchToPreview.gif" width="137" height="33"></font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Wenn nun 
+der Parameter 0 verändert wird, so sollte für die Werte 32 bis 127 der 
+gewünschte Buchstabe des eigenen Fonts unten links auf dem Display angezeigt 
+werden. </font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Natürlich 
+reicht dieses noch nicht aus, um ganze Texte auszugeben. Hierzu wird ein wenig 
+NXC-Code benötigt, der jedoch recht einfach ist und sich leicht in eigene 
+Programme integrieren lässt:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="1" width="100%" id="table11" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>void</b> BigLettersOut( <b>int</b> 
+		x, <b>int</b> y, <b>string</b> s )<br>
+		{<br>
+&nbsp;&nbsp; <b>int</b> i;<br>
+&nbsp;&nbsp; <b>int</b> v[<font color="#FF0000">1</font>];<br>
+		<br>
+&nbsp;&nbsp; <b>for</b>( i=<font color="#FF0000">0</font>; i&lt;<font color="#0000FF">StrLen</font>( 
+		s ); i++ )<br>
+&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v[<font color="#FF0000">0</font>] = s[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000FF">GraphicOutEx</font>( x,y,
+		<font color="#990033"><i>&quot;Big_Letters.ric&quot;</i></font>, v );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x += <font color="#FF0000">10</font>;<br>
+&nbsp;&nbsp; }<br>
+		}</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><font color="#0000FF">&nbsp;&nbsp; </font>
+		BigLettersOut(
+		<font color="#FF0000">&nbsp;0</font>,<font color="#FF0000">40</font>, <i>
+		<font color="#990033">&quot;Hello&quot;</font></i>&nbsp; );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><font color="#0000FF">&nbsp;&nbsp; </font>
+		BigLettersOut(
+		<font color="#FF0000">30</font>,<font color="#FF0000">25</font>, <i>
+		<font color="#990033">&quot;world!&quot;</font></i> );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">Nach 
+Ausführung des Programms erscheint folgender Text auf dem NXT-Bildschirm:</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">
+<img border="0" src="../../images/nxtRICedit_Example_Font7.gif" width="253" height="164"></p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="left">
+<font size="2" face="Arial">Die in diesem Programm enthaltene Prozedur 
+BigLettersOut kann so in jedes eigene NXC-Programm mit übernommen werden. Es 
+muss jedoch darauf geachtet werden, dass der Inkrementfaktor von 10 (Zeile x += 
+10;) an den jeweiligen Font angepasst wird. Die Routine kann auch noch so 
+angepasst werden, dass Sonderzeichen wie z.B. Zeilenvorschub mit berücksichtigt 
+werden, so dass auch mehrzeilige Ausgaben mit nur einem Aufruf möglich sind</font></p>
+
+</body>
+
+</html>

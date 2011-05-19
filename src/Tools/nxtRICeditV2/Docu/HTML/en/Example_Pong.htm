@@ -1,0 +1,671 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Neue Seite 1</title>
+</head>
+
+<body topmargin="4" leftmargin="8" rightmargin="8" bottommargin="4">
+
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="5">Example 
+for RIC file: Pong</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Anybody knows 
+the little game Pong! Both players control a little paddle at the side of the 
+screen and a ball will move between them. The player who misses the ball will 
+get a point – and the player who reached first 9 points loses the game. Of 
+course you already can use native drawing commands of the NXT for displaying the 
+playing field, paddles, the ball and the counter for the points. But you need 
+more programming code for the same displaying, you are limited and you can’t 
+modify the look and feel afterwards.</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The following 
+example should show how you can realize the complete display – including the 
+counter for the points – by using only one call of a RIC file!</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p>
+<table border="0" width="100%" id="table1" cellpadding="2">
+	<tr>
+		<td width="190" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Element</font></td>
+		<td width="152" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Realized by</font></td>
+		<td bgcolor="#000000" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font color="#FFFFFF" size="2" face="Arial">Parameter</font></td>
+		<td bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Comment</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Counter for left player</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		NumBox</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">0 
+		: Points</font></td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Count of points for left player</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Counter for right player</font></td>
+		<td width="152" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		NumBox</font></td>
+		<td bgcolor="#E0E0E0" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">1 
+		: Points</font></td>
+		<td bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Count of points for right player</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC"><font face="Arial" size="2">Upper 
+		limitation </font></td>
+		<td width="152" bgcolor="#CCCCCC"><font size="2" face="Arial">Line</font></td>
+		<td bgcolor="#CCCCCC" width="66">&nbsp;</td>
+		<td bgcolor="#CCCCCC"><font face="Arial" size="2">Static element</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0"><font face="Arial" size="2">Middle 
+		line</font></td>
+		<td width="152" bgcolor="#E0E0E0"><font size="2" face="Arial">Line</font></td>
+		<td bgcolor="#E0E0E0" width="66">&nbsp;</td>
+		<td bgcolor="#E0E0E0"><font face="Arial" size="2">Static element</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Bottom limitation</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Line</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Static element</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Left paddle</font></td>
+		<td width="152" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		CopyBit 3 x 8 Pixels</font></td>
+		<td bgcolor="#E0E0E0" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">2 
+		: Y-Pos</font></td>
+		<td bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Vertical position of left paddle</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Right paddle</font></td>
+		<td width="152" bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		CopyBit 3 x 8 Pixels</font></td>
+		<td bgcolor="#CCCCCC" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">3 
+		: Y-Pos</font></td>
+		<td bgcolor="#CCCCCC">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Vertical position of right paddle</font></td>
+	</tr>
+	<tr>
+		<td width="190" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		Ball</font></td>
+		<td width="152" bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		CopyBit 5 x 5 Pixels</font></td>
+		<td bgcolor="#E0E0E0" width="66">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">4 
+		: X-Pos</font></p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">5 
+		: Y-Pos</font></td>
+		<td bgcolor="#E0E0E0">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Position of Ball</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">&nbsp;</font></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Now we have 8 
+RIC elements – but we need more than only 8 RIC elements because we need an 
+additional Sprite element which contains the images for both paddles and the 
+ball!</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">On the 
+following steps we will create a RIC file which generate the following output 
+for the little game Pong:</span></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center">
+<img border="0" src="../../images/nxtRICedit_Example_Pong0.gif" width="400" height="256"></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="0" width="100%" id="table2" cellpadding="2">
+	<tr>
+		<td width="50" valign="top" bgcolor="#000000" align="center">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Step</font></td>
+		<td valign="top" bgcolor="#000000">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">0</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Start the program nxtRICeditV2 and create a niew RIC file.</font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">1</font></b></td>
+		<td valign="top">
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Insert a new Sprite element which contains the image for the ball and 
+		both paddles. Add the sprite element by pressing on the following button:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Add_Sprite.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Afterwards you have to create a image like this:</font></p>
+		<table border="0" width="100%" id="table3" cellpadding="2">
+			<tr>
+				<td width="297">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font size="2" face="Arial">
+				<img border="0" src="../../images/nxtRICedit_Example_Pong1.gif" width="289" height="280"></font></td>
+				<td>
+				<p class="MsoNormal">
+				<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+				If you arrange all three elements like this than you can 
+				minimize your memory. So you only have to store 13 bytes for the 
+				image itself! </span></p>
+				<p class="MsoNormal">
+				<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">
+				For better recognition the different elements are colourized: 
+				left paddle (red), right paddle (blue) and last but not least 
+				the ball (green).</span></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		position of the image on the available drawing area isn’t important 
+		because only the used pixels will be stored in the file. If you make a 
+		mistake during creation of the image so you can correct it every time 
+		and reduce the used area by pressing the following button:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Sprite_Compress.gif" width="33" height="33"></font></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font size="2" face="Arial">2</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">On the 
+		next step we will add two NumBox elements for displaying the points of 
+		each player at the end of the RIC list. Add them by pressing twice the 
+		following button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Arial">
+		<img border="0" src="../../images/nxtRICedit_Add_NumBox.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Both 
+		NumBox elements are the first elements which needs a parameter for the 
+		output. Therefore you should define the attributes of the NumBox 
+		elements like thi</span><span style="font-size: 10.0pt; font-family: Arial">s:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table7" cellpadding="2">
+			<tr>
+				<td width="34" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">NumBox</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Value</font></td>
+				<td bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">43</td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[0]</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Counter for the left player</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">51</td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[1]</font></td>
+				<td bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Counter for the right player</font></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Yellow 
+		marked fields must be defined as a parameter! If you change the values 
+		of parameter 0 and/or 1 than you can see immediately the change in the 
+		preview of the RIC file.</span></td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font face="Arial" size="2">3</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Now we 
+		have to insert three Line elements which will be used for the limitation 
+		of the play field. Add them by pressing three times the following 
+		button:</span></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_Line.gif" width="33" height="33"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">The 
+		attributes for start and end point of all three lines can be defined 
+		with the mouse or by direct input into the attribute fields:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table5" cellpadding="2">
+			<tr>
+				<td width="34">
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+				<td width="100" colspan="2" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Start point</font></td>
+				<td width="100" colspan="2" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">End point</font></td>
+				<td>
+				<p style="margin-top: 0; margin-bottom: 0">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="34" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Linie</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Y</font></td>
+				<td bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">99</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Lower border line</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">63</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">99</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">63</font></td>
+				<td bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Upper border line</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">49</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">49</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">62</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Middle line</font></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		&nbsp;</td>
+		<td valign="top">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">
+		<p style="margin-top: 0; margin-bottom: 0"><b><font face="Arial" size="2">4</font></b></td>
+		<td valign="top">
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">After 
+		the simple RIC elements we have to add three CopyBits elements by 
+		pressing three times the following button:</span><font face="Arial" size="2">:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Add_CopyBits.gif" width="33" height="34"></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+		Addapt the settings for the attributes of all three CopyBits elements 
+		like this:</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<table border="0" width="100%" id="table6" cellpadding="2">
+			<tr>
+				<td width="34" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">CopyBits</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<font color="#FFFFFF" size="2" face="Arial">Sprite-ID</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Pos Y</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Width</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Height</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel X</font></td>
+				<td width="50" align="center" bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Rel Y</font></td>
+				<td bgcolor="#000000">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2" color="#FFFFFF">Description</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC"><font size="2" face="Arial">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">5</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">8</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[2]</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Left paddle</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">2</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0"><font size="2" face="Arial">1</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">4</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">5</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">8</font></td>
+				<td width="50" align="center" bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">95</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[3]</font></td>
+				<td bgcolor="#E0E0E0">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Right paddle</font></td>
+			</tr>
+			<tr>
+				<td width="34" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">3</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC"><font size="2" face="Arial">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">1</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">0</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">5</font></td>
+				<td width="50" align="center" bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">5</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[4]</font></td>
+				<td width="50" align="center" bgcolor="#FFFF66">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">P[5]</font></td>
+				<td bgcolor="#CCCCCC">
+				<p style="margin-top: 0; margin-bottom: 0">
+				<font face="Arial" size="2">Ball</font></td>
+			</tr>
+		</table>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">Yellow 
+		marked fields must be defined as parameters! After defining all three 
+		CopyBits the colourized areas will be dynamically copied on the NXT 
+		screen as following:</span></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0" align="center">
+		<font face="Arial" size="2">
+		<img border="0" src="../../images/nxtRICedit_Example_Pong4.gif" width="400" height="400"> </font></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center">&nbsp;</td>
+		<td valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50" valign="top" align="center"><b><font size="2" face="Arial">5</font></b></td>
+		<td valign="top"><font size="2" face="Arial">Dont forget to save the RIC 
+		file with the file name </font><b><font size="2" face="Courier New">Pong.ric</font></b><font size="2" face="Arial">!</font><p>
+		<font face="Arial" size="2">As you can see in the upper left corner the 
+		RIC file for displaying the complete Pong game have a size of 149 bytes 
+		only! When you try to do the same with normal drawing commands you need 
+		more space in the memory of the NXT!</font></td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">After defining 
+all RIC elements of your RIC file for the game pong, you can take a look to your 
+work by pressing the following button:</span></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0" align="center"><font face="Arial" size="2">
+<img border="0" src="../../images/nxtRICedit_SwitchToPreview.gif" width="137" height="33"></font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">When you change 
+the parameters from 0 to 5, you can see in the PreView area immediately the new 
+output. On the same way you have to do the call of the RIC file within your own 
+program. The following part of code should show on which way you can do this:</span></p>
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<table border="1" width="100%" id="table8" cellpadding="3" bordercolor="#0000FF" bordercolordark="#FFFFFF" bordercolorlight="#FFFFFF">
+	<tr>
+		<td width="50">&nbsp;</td>
+		<td bordercolor="#0000FF" bordercolorlight="#0000FF" bordercolordark="#0000FF" background="../../images/nxtRICedit_Background_NXC.gif">
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>task</b> main()<br>
+		{</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; int</b> pong[
+		<font color="#FF0000">6</font> ];</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">0</font> ]= <font color="#FF0000">0</font>;&nbsp;&nbsp;&nbsp;
+		<i>// Points of left player</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">1</font> ]= <font color="#FF0000">0</font>;&nbsp;&nbsp;&nbsp;
+		<i>// Points of right player</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">2</font> ]= <font color="#FF0000">28</font>;&nbsp;&nbsp;
+		<i>// Vertical position of left player</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">3</font> ]= <font color="#FF0000">28</font>;<font color="#FF0000">&nbsp;&nbsp;
+		</font><i>// Vertical position of right player</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">4</font> ]= <font color="#FF0000">37</font>;&nbsp;&nbsp;
+		<i>// Horizontal position of ball</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><b>&nbsp;&nbsp; </b>pong[
+		<font color="#FF0000">5</font> ]= <font color="#FF0000">19</font>;&nbsp;&nbsp;
+		<i>// Vertical position of ball</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		&nbsp;</p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp; <i>// Draw complete 
+		Pong-Display with one call of RIC file!</i></font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<font color="#0000FF">&nbsp;&nbsp; GraphicOutEx</font>(
+		<font color="#FF0000">0</font>,<font color="#FF0000">0</font>, <i>
+		<font color="#990033">&quot;Pong.ric&quot;</font></i> ,pong );</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2"><br>
+		<b>&nbsp;&nbsp; while</b>( <font color="#FF0000">1</font> )</font></p>
+		<p style="margin-top: 0; margin-bottom: 0">
+		<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+		}</font></td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Arial">For the game 
+itself you have to build a loop inside the program for periodically update of 
+the display and you have to set all 6 parameters before you call the RIC file 
+pong.ric. The position of the left and right paddle can be read from rotation 
+sensor of the NXT motors. One of the possible implementations of the game Pong 
+you can find here: </span><font face="Arial" size="2">
+<a href="../../source/Pong.nxc">Pong.nxc</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+</body>
+
+</html>

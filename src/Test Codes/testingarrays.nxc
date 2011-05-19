@@ -1,0 +1,27 @@
+unsigned int fsizeMap;
+unsigned int rtn_code1;
+unsigned int rtn_code2;
+byte handleMap = 0;
+unsigned long test[16][100];
+int x,y;
+
+task main()
+{
+ PlayTone(144, 1);
+ rtn_code1=OpenFileRead("test", fsizeMap, handleMap);
+ rtn_code2=Read(handleMap, test);
+ TextOut(0, LCD_LINE1, "rtncd1            ");
+ TextOut(50, LCD_LINE1, FormatNum("%04x", rtn_code1));
+ TextOut(0, LCD_LINE2, "rtncd2            ");
+ TextOut(50, LCD_LINE2, FormatNum("%04x", rtn_code2));
+ PlayTone(144, 1);
+
+ for(y = 0; y < 16; y++)
+       for(x = 0; x < 100; x++)
+             {
+               TextOut(0, LCD_LINE3, "num            ");
+               TextOut(50, LCD_LINE3, FormatNum("%d", test[y][x]));;
+               //Wait(250);
+               
+             }
+ }

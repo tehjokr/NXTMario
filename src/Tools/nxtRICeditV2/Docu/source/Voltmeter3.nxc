@@ -1,0 +1,58 @@
+//------------------------------------------------------------------------------
+//   Voltmeter.nxc     by Andreas Dreier
+//                        Dorfleite 17 - 86641 Staudheim - Germany
+//                        mailto: andreas@dreier-privat.de
+//
+//   Demonstration program for using Voltmeter2.ric which was created by the new
+//   nxtRICeditV2
+//
+//   Connection to the NXT:    Port A: -               Sensor 1: Light
+//                             Port C: -               Sensor 2: Sound
+//                             Port C: -               Sensor 3: -
+//                                                     Sensor 4: -
+//   Additional files on NXT:  Voltmeter2.ric
+//------------------------------------------------------------------------------
+
+#define Scale_0_100_mV     0
+#define Scale_0_1_V        6
+#define Scale_0_100_mA    12
+#define Scale_0_1_A       18
+#define Scale_0_100_kOhm  24
+#define Scale_0_1MOhm     30
+#define Scale_Sound       36
+#define Scale_Light       42
+
+task main()
+{
+   int vm_light[ 2 ];
+   int vm_sound[ 2 ];
+   
+   vm_light[ 1 ] = Scale_Light;
+   vm_sound[ 1 ] = Scale_Sound;
+   
+   TextOut( 60,LCD_LINE1,"Search" );
+   TextOut( 60,LCD_LINE2,"light" );
+   
+   TextOut( 0,LCD_LINE7,"Blow" );
+   TextOut( 0,LCD_LINE8,"sensor" );
+
+   while( 1 )
+   {
+       // Recalculate sensor value to a value range of 0 to 100
+       
+       vm_light[ 0 ] = 100 - ( Sensor( IN_1 ) - 500 ) / 3;
+       vm_sound[ 0 ] = 100 - Sensor( IN_2 ) / 5;
+       
+       // Draw complete Voltmeter-Display with one call of RIC file for
+       // light sensor and another for sound sensor
+
+       GraphicOutEx( 0,28, "Voltmeter2.ric" ,vm_light );
+       GraphicOutEx( 40,0, "Voltmeter2.ric" ,vm_sound );
+
+       Wait( 50 );
+   }
+}
+
+//------------------------------------------------------------------------------
+//  Voltmeter.nxc - End of file
+//------------------------------------------------------------------------------

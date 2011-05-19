@@ -1,0 +1,4 @@
+BlockX=8
+BlockY=8
+MapWidth=300
+MapHeight=16
