@@ -9,6 +9,6 @@ A) Download a binary (that means the ready to run game), and download it to the 
 
 B) Download the source code (that means the human code that a computer must convert), compile it with BricxCC*, and download to the NXT
 
-The binaries are in the folder called bin :-)
+For now you'll need to install the NXC/NBC modified firmware that comes with Bricx Command Center in order for the game to run. If you can get it to run without, please send an email!
 
 * http://bricxcc.sourceforge.net/
