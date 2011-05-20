@@ -3,7 +3,9 @@
 Special thanks goes out to the authors of the following webpages for all their programming help:
 http://www.newgrounds.com/portal/view/209851
 http://www.kirupa.com/developer/mx2004/platform_game.htm
-(find link for the 4k Java Jump and run game and put it here)
+http://www.java4k.com/index.php?action=games&method=view&gid=331
+http://nxt-progs.blogspot.com/2011/04/important-nxt-note.html
+
 */
 
 #download "MarioLevel1.map"       //Download the Map File
@@ -106,10 +108,10 @@ int maxheight = 20;
 int falling = 1;
 int pressedCenter = 0;
 int jumpoffspot;
-float speed = 0;
-float maxspeed = 15;
-float gravity = 1.2; // was 1.5
-float velocity = 0;
+int speed = 0;        // x1000
+int maxspeed = 15000; // x1000
+int gravity = 1200;   // x1000  was 1.5
+int velocity = 0;     // x1000
 byte handleMap = 0;
 int fsizeMap = 0;
 int ferrorMap = 0;
@@ -124,8 +126,8 @@ byte Map[MapHeight][MapWidth];
 int RICValues[1];
 int CameraX = -30;
 int CameraY = 64;
-
-
+int fps = 0;
+int lasttick = 0;
 int loadMap()
 {
   ferrorMap = OpenFileRead(MAP_FILE_NAME, fsizeMap, handleMap);
@@ -182,7 +184,7 @@ int updateMario()
 {
   //RectOut(oldMarioX - CameraX, oldMarioY - CameraY, 12, 15, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear old mario
   //RectOut(0, 35, 50, 28, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear Debug Watches
-  NumOut(0,LCD_LINE2, MarioDown); //Debug Watches
+  NumOut(0,LCD_LINE2, speed); //Debug Watches
   NumOut(0,LCD_LINE3, (MarioY - 1 + 8) >> 3); //Debug Watches
   if (direction == -1)
   {
@@ -215,6 +217,7 @@ task main()
   
   while(true)
   {
+    lasttick=CurrentTick()
     // *********************** Event Handling *************************** //
     
     btnLeft = ButtonPressed(BTNLEFT, false);
@@ -225,14 +228,14 @@ task main()
     {
       if (speed > (0 - maxspeed)) // If Mario can go faster...
       {
-        speed -=2;              // ... mario moves faster to the left
+        speed -=2000;              // ... mario moves faster to the left
       }
     }
     else if (btnRight)
     {
       if (speed < maxspeed)     // If Mario can go faster...
       {
-        speed +=2;              // ... mario moves faster to the right
+        speed +=2000;              // ... mario moves faster to the right
       }
     }
 
@@ -241,7 +244,7 @@ task main()
       direction = -1;           // ... set the direction to left
       if (MarioX > 0)           // If Mario isn't up against a wall...
       {
-        MarioX += speed;
+        MarioX += (speed / 1000);
         MarioC = MarioC + 1;
         toggleMoving = 1;
         if (MarioC > 3)
@@ -256,12 +259,12 @@ task main()
       direction = 1;             // ... set the direction to right
       if (MarioX < MapWidth * TileWidth)
       {
-        MarioX += speed;
+        MarioX += (speed / 1000);
         MarioC = MarioC + 1;
         toggleMoving = 1;
         if (MarioC > 3)
         {
-          MarioC=1;
+          MarioC = 1;
         }
         dirtyMario = 1;        // Mario has moved
       }
@@ -274,7 +277,7 @@ task main()
         pressedCenter = true;    //You have pressed but not released the Center button
         if (falling == false)    // If he isn't already falling
         {
-          velocity -= 10;        // Throw him in the air!
+          velocity -= 10000;        // Throw him in the air!
           falling = true;        // Gravity now affects him!
           jumping = true;        // He is on the ascending part of his jump!
           PlayFile(JUMP_FILE_NAME);
@@ -293,7 +296,7 @@ task main()
     if (falling)               // Gravity
     {
       velocity += gravity;
-      MarioY -= velocity;
+      MarioY -= (velocity / 1000);
       dirtyMario = 1;          // Mario has moved
     }
 
@@ -320,9 +323,9 @@ task main()
       dirtyMario = 1;
     }
 
-    speed = speed * 0.55;
+    speed = (speed * 550) / 1000;
     
-    if (speed >-1 && speed <1 && toggleMoving == 1) // A slow Mario stops
+    if (speed >-1000 && speed <1000 && toggleMoving == 1) // A slow Mario stops
     {
       speed = 0;
       MarioC = 0;
