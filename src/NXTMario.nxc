@@ -12,19 +12,13 @@ http://nxt-progs.blogspot.com/2011/04/important-nxt-note.html
 #download "MarioSprites.ric"      //Download the Level Sprites File
 #download "MarioTheme.rmd"        //Download the Mario Midi File
 #download "MarioJump.rso"         //Download the Jump Sound File
-#download "marioLeft0.ric"
-#download "marioLeft1.ric"
-#download "marioLeft2.ric"
-#download "marioLeft3.ric"
-#download "marioRight0.ric"
-#download "marioRight1.ric"
-#download "marioRight2.ric"
-#download "marioRight3.ric"
+#download "MarioMario.ric"        //Download the Mario Sprites File
 
 #define MAP_FILE_NAME "MarioLevel1.map"
 #define SPRITES_FILE_NAME "MarioSprites.ric"
 #define MUSIC_FILE_NAME "MarioTheme.rmd"
 #define JUMP_FILE_NAME "MarioJump.rso"
+#define MARIO_FILE_NAME "MarioMario.ric"
 #define TileWidth 8
 #define TileHeight 8
 #define ScreenWidth 100
@@ -123,11 +117,13 @@ long MapHeight = 16;
 int debug1;
 int debug2;
 byte Map[MapHeight][MapWidth];
-int RICValues[1];
+int RICValues[2];
 int CameraX = -30;
 int CameraY = 64;
 int fps = 0;
 int lasttick = 0;
+int coins;
+
 int loadMap()
 {
   ferrorMap = OpenFileRead(MAP_FILE_NAME, fsizeMap, handleMap);
@@ -148,6 +144,21 @@ else
 }
 }
 
+int SetMap(int x, int y, int value)                                        // This function lets us safely set any map tile
+{
+if ((x >= 0) && (x < MapWidth) && (y >= 0) && ((MapHeight - y) < MapHeight))
+{
+ Map[MapHeight-y][x] = value - 1;
+ PlayTone(2000, 10);
+}
+else
+{
+ return 1;
+ PlayTone(100, 10);
+}
+}
+
+
 int drawMap(int locx, int locy)
 {
   int i, j, absx, absy, mapx, mapy, xoffset, yoffset;
@@ -159,23 +170,8 @@ int drawMap(int locx, int locy)
   {
    for (j = 0; j < ScreenWidth / TileWidth + 2; j++)  // Changing to + 1 gives a slight speed increase, but slops edges
    {
-    //debug1=(mapy+i) % 4;
-    //debug2=(mapx+j) % 4;
-    //RICValues[0] = Map[(mapy+i) % 4][(mapx+j) % 4];
-    //RICValues[0] = Map[(mapy+i) % 10][(mapx+j) % 16];
-    absx = mapx + j;
-    absy = MapHeight - mapy - i;
-    if ((absx >= 0) && (absx < MapWidth) && (absy >= 0) && (absy < MapHeight))
-    {
-      RICValues[0] = Map[absy][absx] + 1;
-    }
-    else
-    {
-      RICValues[0] = 2;
-    }
-    //RICValues[0] = Map[8][13];
-    GraphicOutEx((j-1)*TileWidth + xoffset, (i-1)*TileHeight - yoffset, SPRITES_FILE_NAME, RICValues);
-    //Wait(50);
+     RICValues[0] = GetMap(mapx + j, mapy + i);
+     GraphicOutEx((j-1)*TileWidth + xoffset, (i-1)*TileHeight - yoffset, SPRITES_FILE_NAME, RICValues);
    }
   }
 }
@@ -184,18 +180,11 @@ int updateMario()
 {
   //RectOut(oldMarioX - CameraX, oldMarioY - CameraY, 12, 15, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear old mario
   //RectOut(0, 35, 50, 28, (DRAW_OPT_CLEAR_PIXELS | DRAW_OPT_FILL_SHAPE));  //Clear Debug Watches
-  NumOut(0,LCD_LINE2, speed); //Debug Watches
-  NumOut(0,LCD_LINE3, (MarioY - 1 + 8) >> 3); //Debug Watches
-  if (direction == -1)
-  {
-    fileDirection = "Left";
-  }
-  else
-  {
-    fileDirection = "Right";
-  }
-  //drawMap(50,50);
-  GraphicOut(MarioX - CameraX, MarioY - CameraY, "mario" + fileDirection + NumToStr(MarioC) + ".ric"); //Draw new mario
+  NumOut(0,LCD_LINE2, debug1); //Debug Watches
+  NumOut(0,LCD_LINE3, debug2); //Debug Watches
+  RICValues[0] = direction;
+  RICValues[1] = MarioC;
+  GraphicOutEx(MarioX - CameraX, MarioY - CameraY, MARIO_FILE_NAME, RICValues); //Draw new mario
 
   //oldMarioX = MarioX;
   //oldMarioY = MarioY;
@@ -203,8 +192,21 @@ int updateMario()
 
 }
 
-int isSolid(int SpriteNumber)
+int isSolid(int tile)
 {
+return (tile == MAP_QUESTION ||
+tile == MAP_BLACK_BLOCK ||
+tile == MAP_METAL_1 ||
+tile == MAP_METAL_2 ||
+tile == MAP_BREAK_BLOCK ||
+tile == MAP_MOVE_PLATFORM ||
+tile == MAP_PIPE_TOP_1 ||
+tile == MAP_PIPE_TOP_2 ||
+tile == MAP_PIPE_MIDDLE_1 ||
+tile == MAP_PIPE_MIDDLE_2 ||
+tile == MAP_PLATFORM ||
+tile == MAP_UPPER_GROUND ||
+tile == MAP_LOWER_GROUND);
 }
 
 task main()
@@ -229,6 +231,7 @@ task main()
       if (speed > (0 - maxspeed)) // If Mario can go faster...
       {
         speed -=2000;              // ... mario moves faster to the left
+        MarioC = ((MarioC + 1) % 3) + 1;
       }
     }
     else if (btnRight)
@@ -236,21 +239,21 @@ task main()
       if (speed < maxspeed)     // If Mario can go faster...
       {
         speed +=2000;              // ... mario moves faster to the right
+        MarioC = ((MarioC + 1) % 3) + 1;
       }
     }
-
+    else
+    {
+     MarioC = 0;
+    }
+    
     if (speed < 0)              // If Mario is going left...
     {
-      direction = -1;           // ... set the direction to left
+      direction = 0;           // ... set the direction to left
       if (MarioX > 0)           // If Mario isn't up against a wall...
       {
         MarioX += (speed / 1000);
-        MarioC = MarioC + 1;
         toggleMoving = 1;
-        if (MarioC > 3)
-        {
-          MarioC = 1;
-        }
         dirtyMario = 1;        // Mario has moved
       }
     }
@@ -260,12 +263,7 @@ task main()
       if (MarioX < MapWidth * TileWidth)
       {
         MarioX += (speed / 1000);
-        MarioC = MarioC + 1;
         toggleMoving = 1;
-        if (MarioC > 3)
-        {
-          MarioC = 1;
-        }
         dirtyMario = 1;        // Mario has moved
       }
     }
@@ -302,16 +300,22 @@ task main()
 
    // Collision Detection
    
-    //if Map[MarioY + ? >> 3][MarioX + ? >> 3]
-    //   if Map[MarioY + MarioY1 >> 3][MarioX + MarioX1 >> 3]
+    if (GetMap((MarioX + MarioX1) >> 3, (MarioY + MarioY1) >> 3) == MAP_COIN)
+    {
+      SetMap((MarioX + MarioX1) >> 3, (MarioY + MarioY1) >> 3, MAP_SKY);
+      coins++;
+    }
+
 
     // Floor detection
     MarioDown = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
-    if (MarioDown <> 2)
+    if (isSolid(MarioDown))
     {
       if (falling && !jumping)
       {
-        //MarioY = 0;
+        MarioY = ((MarioY - 1 + 8) >> 3) * 8; // So he doesn't go through the floor as much
+        SetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3, 5);
+        debug1 = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
         falling = 0;
         velocity = 0;
         dirtyMario = 1;        // Mario has moved
@@ -328,7 +332,6 @@ task main()
     if (speed >-1000 && speed <1000 && toggleMoving == 1) // A slow Mario stops
     {
       speed = 0;
-      MarioC = 0;
       dirtyMario = 1;          // Mario has moved
       toggleMoving = 0;
     }
