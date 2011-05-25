@@ -116,7 +116,7 @@ long MapWidth = 300;
 long MapHeight = 16;
 int debug1;
 int debug2;
-byte Map[MapHeight][MapWidth];
+byte Map[4800];
 int RICValues[2];
 int CameraX = -30;
 int CameraY = 64;
@@ -136,25 +136,23 @@ int GetMap(int x, int y)                                        // This function
 {
 if ((x >= 0) && (x < MapWidth) && (y >= 0) && ((MapHeight - y) < MapHeight))
 {
- return Map[MapHeight-y][x] + 1;
-}
-else
-{
- return 2;
-}
-}
-
-int SetMap(int x, int y, int value)                                        // This function lets us safely set any map tile
-{
-if ((x >= 0) && (x < MapWidth) && (y >= 0) && ((MapHeight - y) < MapHeight))
-{
- Map[MapHeight-y][x] = value - 1;
- PlayTone(2000, 10);
+ return Map[(MapHeight-y)*MapWidth+x] + 1;
 }
 else
 {
  return 1;
- PlayTone(100, 10);
+}
+}
+
+int SetMap(int x, int y, byte value)                                        // This function lets us safely set any map tile
+{
+if ((x >= 0) && (x < MapWidth) && (y >= 0) && ((MapHeight - y) < MapHeight))
+{
+ Map[(MapHeight-y)*MapWidth+x] = value - 1;
+}
+else
+{
+ return 1;
 }
 }
 
@@ -309,13 +307,12 @@ task main()
 
     // Floor detection
     MarioDown = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
+    debug1 = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
     if (isSolid(MarioDown))
     {
       if (falling && !jumping)
       {
         MarioY = ((MarioY - 1 + 8) >> 3) * 8; // So he doesn't go through the floor as much
-        SetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3, 5);
-        debug1 = GetMap((MarioX + 6) >> 3, (MarioY - 1 + 8) >> 3);
         falling = 0;
         velocity = 0;
         dirtyMario = 1;        // Mario has moved
@@ -326,7 +323,6 @@ task main()
       falling = true;
       dirtyMario = 1;
     }
-
     speed = (speed * 550) / 1000;
     
     if (speed >-1000 && speed <1000 && toggleMoving == 1) // A slow Mario stops

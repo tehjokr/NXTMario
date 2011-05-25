@@ -1,0 +1,66 @@
+int MarioX = 10;
+int MarioY = 50;
+int MarioX1 = 4;    //try 0
+int MarioY1 = 4;    //try 0
+int MarioX2 = 11;   //try 12
+int MarioY2 = 15;
+int MarioUp = 0;
+int MarioDown = 0;
+int MarioLeft = 0;
+int MarioRight = 0;
+int MarioC;
+int oldMarioX = 10;
+int oldMarioY = 0;
+int oldMarioC;
+int btnLeft;
+int btnRight;
+int btnCenter;
+int direction = 1;
+string fileDirection;
+int toggleMoving = 1;
+int jumping = 0;
+int maxheight = 20;
+int falling = 1;
+int pressedCenter = 0;
+int jumpoffspot;
+int speed = 0;        // x1000
+int maxspeed = 15000; // x1000
+int gravity = 1200;   // x1000  was 1.5
+int velocity = 0;     // x1000
+byte handleMap = 0;
+int fsizeMap = 0;
+int ferrorMap = 0;
+byte handleSprites = 0;
+int fsizeSprites = 0;
+int dirtyMario = 0;
+long MapWidth = 300;
+long MapHeight = 16;
+int debug1;
+int debug2;
+byte Map[4800];
+int RICValues[2];
+int CameraX = -30;
+int CameraY = 64;
+int fps = 0;
+int lasttick = 0;
+int coins;
+
+int loadMap()
+{
+  ferrorMap = OpenFileRead(MAP_FILE_NAME, fsizeMap, handleMap);
+  Read(handleMap, MapWidth);
+  Read(handleMap, MapHeight);
+  Read(handleMap, Map);
+}
+
+task main()
+{
+loadMap();
+int i, j;
+for (int j = 0; j < 20; j++)
+{
+NumOut(0, 30, j);
+NumOut(0, 0, Map[j]);
+Wait(500);
+}
+}
